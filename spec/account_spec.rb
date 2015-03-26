@@ -1,5 +1,6 @@
 # ================================================================
 # 2015/03/12 Thomas
+# Purpose: This rspec logon correctly and go to the different links on the left panel
 # ================================================================
 
 require_relative 'spec_helper'
