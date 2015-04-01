@@ -6,7 +6,7 @@
 @cls
 @echo BEGIN: %Date%, %time%
 
-@rem rspec %1
-@rspec spec
+@rspec %1
+@rem rspec spec
 
 @echo END: %date%, %time%		#This does not appear, due to "rspec". Not sure how to fix
