@@ -25,9 +25,6 @@ class Login < CommonPage
 	SUCCESS_MESSAGE	= { id: 'accountContainer' }
 	FAILURE_MESSAGE	= { css: '.alert.alert-error' }
 
-	def initialize(driver)
-		super(driver)
-	end
 	def with(username, password)
 		is_displayed?(LOGIN_FORM).should == true
 		is_displayed?(USERNAME_INPUT).should == true

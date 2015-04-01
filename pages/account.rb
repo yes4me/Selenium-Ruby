@@ -32,10 +32,6 @@ class Account < CommonPage
 	EDIT_SETTINGS_LABEL		= "Settings"
 	BILLING_INFO_LABEL		= "Subscribe for Sauce Labs"
 
-	def initialize(driver)
-		super(driver)
-	end
-
 	def goTo_AccountHome
 		puts "HOME"
 		visit("/account")
