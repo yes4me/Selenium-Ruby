@@ -15,10 +15,10 @@
 		#@driver.find_element(cssSelector:"").displayed?.should == true
 # ================================================================
 
-require_relative 'base_page'
+require_relative '../lib/common_page'
 
 
-class Login < BasePage
+class Login < CommonPage
 	LOGIN_FORM 		= { id: 'login' }
 	USERNAME_INPUT	= { id: 'username' }
 	PASSWORD_INPUT	= { id: 'password' }
@@ -27,9 +27,6 @@ class Login < BasePage
 
 	def initialize(driver)
 		super(driver)
-	end
-	def logout
-		visit("/logout")
 	end
 	def with(username, password)
 		is_displayed?(LOGIN_FORM).should == true

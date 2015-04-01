@@ -2,18 +2,18 @@
 # 2015/03/13 Thomas
 # ================================================================
 
-require_relative 'base_page'
+require_relative '../lib/common_page'
 
 
-class Account < BasePage
-	ACCOUNT_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[1]/a'}
-	TESTS_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[2]/a'}
-	SNAPSHOTS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[3]/a'}
-	DASHBOARD_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[4]/a'}
-	SUBACCOUNTS_LINK	= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[5]/a'}
-	ACTIVE_TUNNELS_LINK	= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[6]/a'}
-	EDIT_SETTINGS_LINK	= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[7]/a'}
-	BILLING_INFO_LINK	= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[8]/a'}
+class Account < CommonPage
+	ACCOUNT_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[1]/a'}
+	TESTS_LINK				= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[2]/a'}
+	SNAPSHOTS_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[3]/a'}
+	DASHBOARD_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[4]/a'}
+	SUBACCOUNTS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[5]/a'}
+	ACTIVE_TUNNELS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[6]/a'}
+	EDIT_SETTINGS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[7]/a'}
+	BILLING_INFO_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[8]/a'}
 
 	ACCOUNT_LOCATOR			= { id:		'update-user-info' }
 	TESTS_LOCATOR			= { css:	'#banner-box>span'}
