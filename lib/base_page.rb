@@ -1,5 +1,6 @@
 # ================================================================
 # 2015/03/13 Thomas
+# Purpose: set of methods that should universally work on all websites
 # ================================================================
 
 require 'selenium-webdriver'
