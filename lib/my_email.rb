@@ -45,5 +45,5 @@ end
 
 
 EMAIL	= "selenium.automation@saucelabs.com"
-@log	= MyEmail.new(EMAIL)
-puts "#{ @log.gen_unique_email_address }"
+@email	= MyEmail.new(EMAIL)
+puts "#{ @email.gen_unique_email_address }"
