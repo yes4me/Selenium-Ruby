@@ -19,7 +19,7 @@ class MyClock
 	end
 end
 
-class LogRecord
+class MyEmail
 	def initialize(recordName)
 		@recordName = recordName
 	end
@@ -45,5 +45,5 @@ end
 
 
 EMAIL	= "selenium.automation@saucelabs.com"
-@log	= LogRecord.new(EMAIL)
+@log	= MyEmail.new(EMAIL)
 puts "#{ @log.gen_unique_email_address }"
