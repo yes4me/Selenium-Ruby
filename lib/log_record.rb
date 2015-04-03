@@ -24,8 +24,8 @@ class LogRecord
 		@recordName = recordName
 	end
 	def isEmail(email = @recordName)
-		regex = /[A-Za-z0-9_.]+@[A-Za-z0-9_]+[.][A-Za-z0-9]{2,4}/
-		return regex.match(email)?true:false
+		regex = /[A-Za-z0-9_.]+\@[A-Za-z0-9_]+[.][A-Za-z0-9]{2,4}/
+		return email.match(regex)?true:false
 	end
 	def gen_unique_email_address(email = @recordName)
 		if isEmail
@@ -33,10 +33,15 @@ class LogRecord
 			localPart	= array[0]
 			domainPart	= array[1]
 
+			#This way also works
+			#localPart	= email.match(/(.+)\@/)[1]
+			#domainPart	= email.match(/\@(.+)/)[1]
+
 			return "#{localPart}+#{MyClock.getDate}-#{MyClock.microSeconds}@#{domainPart}"
 		end
 	end
 end
+
 
 
 EMAIL	= "selenium.automation@saucelabs.com"
