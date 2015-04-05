@@ -24,7 +24,8 @@ class MyEmail
 		@recordName = recordName
 	end
 	def isEmail(email = @recordName)
-		regex = /[A-Za-z0-9_.]+\@[A-Za-z0-9_]+[.][A-Za-z0-9]{2,4}/
+		#regex = /[A-Za-z0-9_.]+\@[A-Za-z0-9_]+[.][A-Za-z0-9]{2,4}/
+		regex = /(.+)\@(.+)[.][A-Za-z0-9]{2,4}/
 		return email.match(regex)?true:false
 	end
 	def gen_unique_email_address(email = @recordName)
@@ -47,3 +48,4 @@ end
 EMAIL	= "selenium.automation@saucelabs.com"
 @email	= MyEmail.new(EMAIL)
 puts "#{ @email.gen_unique_email_address }"
+puts "#{ @email.isEmail }"

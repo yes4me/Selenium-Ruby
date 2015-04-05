@@ -43,7 +43,7 @@ describe 'WorkSpaceName' do
 	it 'positive-blank-padded-email' do
 		puts "RUNNING TEST: positive-blank-padded-email"
 		#should pass, but actually fail = server bug
-		loginTest(" #{USERNAME_INPUT} ", PASSWORD_INPUT, false)
+		loginTest(" #{USERNAME_INPUT} ", PASSWORD_INPUT, true)
 	end
 	it 'negative-email' do
 		puts "RUNNING TEST: negative-email"
