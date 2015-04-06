@@ -1,5 +1,5 @@
 # ================================================================
-# 2015/03/12 Thomas
+# 2015/03/12 Thomas notes
 	#Does work in Ruby:
 		#@driver.find_element(id: 'login').displayed?.should == true
 		#@driver.find_element(id: "login").displayed?.should == true
@@ -15,15 +15,25 @@
 		#@driver.find_element(cssSelector:"").displayed?.should == true
 # ================================================================
 
-require_relative '../lib/common_page'
+#require_relative '../lib/common_page'
+require_relative 'account'
 
 
 class Login < CommonPage
+	FAILURE_MESSAGE	= { css: '.alert.alert-error' }
+
 	LOGIN_FORM 		= { id: 'login' }
 	USERNAME_INPUT	= { id: 'username' }
 	PASSWORD_INPUT	= { id: 'password' }
-	SUCCESS_MESSAGE	= { id: 'accountContainer' }
-	FAILURE_MESSAGE	= { css: '.alert.alert-error' }
+
+	def success_message_present?
+		@account		= Account.new(@driver)
+		@account.success_message_present?.should == true
+	end
+	def failure_message_present?
+		is_displayed?(FAILURE_MESSAGE).should == true
+	end
+
 
 	def with(username, password)
 		is_displayed?(LOGIN_FORM).should == true
@@ -33,12 +43,5 @@ class Login < CommonPage
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
 		submit(LOGIN_FORM)
-	end
-
-	def success_message_present?
-		@driver.find_element(SUCCESS_MESSAGE).displayed?
-	end
-	def failure_message_present?
-		@driver.find_element(FAILURE_MESSAGE).displayed?
 	end
 end

@@ -6,6 +6,8 @@ require_relative '../lib/common_page'
 
 
 class Account < CommonPage
+	SUCCESS_MESSAGE			= { id: 'accountContainer' }
+
 	ACCOUNT_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[1]/a'}
 	TESTS_LINK				= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[2]/a'}
 	SNAPSHOTS_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[3]/a'}
@@ -14,6 +16,16 @@ class Account < CommonPage
 	ACTIVE_TUNNELS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[6]/a'}
 	EDIT_SETTINGS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[7]/a'}
 	BILLING_INFO_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[8]/a'}
+
+
+	#These variables are created to test various pages. They should be in their own unique files.
+	TESTS_LABEL				= "Test"
+	SNAPSHOTS_LABEL			= "Snapshots"
+	DASHBOARD_LABEL			= "ACCOUNT DASHBOARD"
+	SUBACCOUNTS_LABEL		= "ACCOUNT SUB-ACCOUNTS"
+	ACTIVE_TUNNELS_LABEL	= "ACCOUNT ACTIVE TUNNELS"
+	EDIT_SETTINGS_LABEL		= "Settings"
+	BILLING_INFO_LABEL		= "Subscribe for Sauce Labs"
 
 	ACCOUNT_LOCATOR			= { id:		'update-user-info' }
 	TESTS_LOCATOR			= { css:	'#banner-box>span'}
@@ -24,13 +36,11 @@ class Account < CommonPage
 	EDIT_SETTINGS_LOCATOR	= { css:	'#profile>legend'}
 	BILLING_INFO_LOCATOR	= { css:	'#page-signup>section>header>h1'}
 
-	TESTS_LABEL				= "Test"
-	SNAPSHOTS_LABEL			= "Snapshots"
-	DASHBOARD_LABEL			= "ACCOUNT DASHBOARD"
-	SUBACCOUNTS_LABEL		= "ACCOUNT SUB-ACCOUNTS"
-	ACTIVE_TUNNELS_LABEL	= "ACCOUNT ACTIVE TUNNELS"
-	EDIT_SETTINGS_LABEL		= "Settings"
-	BILLING_INFO_LABEL		= "Subscribe for Sauce Labs"
+
+	def success_message_present?
+		is_displayed?(SUCCESS_MESSAGE).should == true
+	end
+
 
 	def goTo_AccountHome
 		puts "HOME"

@@ -7,7 +7,8 @@ require_relative 'spec_helper'
 
 
 describe 'WorkSpaceName' do
-	USERNAME_INPUT	= "saucelabs.automation@gmail.com"
+	USEREMAIL_INPUT	= "saucelabs.automation@gmail.com"
+	USERNAME_INPUT	= "sbssgm"
 	PASSWORD_INPUT	= "SauceLabs2015"
 
 	before(:each) do
@@ -34,17 +35,16 @@ describe 'WorkSpaceName' do
 
 	it 'positive-email' do
 		puts "RUNNING TEST: positive-email"
-		loginTest(USERNAME_INPUT, PASSWORD_INPUT, true)
+		loginTest(USEREMAIL_INPUT, PASSWORD_INPUT, true)
 	end
 	it 'positive-username' do
 		puts "RUNNING TEST: positive-username"
-		loginTest(USERNAME_INPUT, "asdf", false)
 		loginTest(USERNAME_INPUT, PASSWORD_INPUT, true)
 	end
 	it 'positive-blank-padded-email' do
 		puts "RUNNING TEST: positive-blank-padded-email"
 		#should pass, but actually fail = server bug
-		loginTest(" #{USERNAME_INPUT} ", PASSWORD_INPUT, true)
+		loginTest(" #{USEREMAIL_INPUT} ", PASSWORD_INPUT, true)
 	end
 	it 'negative-email' do
 		puts "RUNNING TEST: negative-email"
@@ -52,6 +52,6 @@ describe 'WorkSpaceName' do
 	end
 	it 'negative-password' do
 		puts "RUNNING TEST: negative-password"
-		loginTest(USERNAME_INPUT, "asdf", false)
+		loginTest(USEREMAIL_INPUT, "asdf", false)
 	end
 end
