@@ -39,6 +39,7 @@ describe 'WorkSpaceName' do
 	it 'positive-username' do
 		puts "RUNNING TEST: positive-username"
 		loginTest(USERNAME_INPUT, "asdf", false)
+		loginTest(USERNAME_INPUT, PASSWORD_INPUT, true)
 	end
 	it 'positive-blank-padded-email' do
 		puts "RUNNING TEST: positive-blank-padded-email"
