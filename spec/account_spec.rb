@@ -24,7 +24,7 @@ describe 'WorkSpaceName' do
 		puts "RUNNING TEST: main page"
 
 		@login.visit("/login")
-		@login.with(USERNAME_INPUT, PASSWORD_INPUT)
+		@login.authentication(USERNAME_INPUT, PASSWORD_INPUT)
 		@login.success_message_present?.should be_true
 
 		@account	= Account.new(@driver)
