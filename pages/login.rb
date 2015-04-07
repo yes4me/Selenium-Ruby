@@ -35,7 +35,7 @@ class Login < CommonPage
 	end
 
 
-	def with(username, password)
+	def authentication(username, password)
 		is_displayed?(LOGIN_FORM).should == true
 		is_displayed?(USERNAME_INPUT).should == true
 		is_displayed?(PASSWORD_INPUT).should == true

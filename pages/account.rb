@@ -49,31 +49,31 @@ class Account < CommonPage
 	end
 	def goTo_Tests
 		visit("/tests")
-		textDisplayed?(TESTS_LOCATOR, TESTS_LABEL).should == true
+		text_displayed?(TESTS_LOCATOR, TESTS_LABEL).should == true
 	end
 	def goTo_Snapshots
 		visit("/snapshots")
-		#puts "==>#{textPresent(SNAPSHOTS_LOCATOR)}<=="
-		textDisplayed?(SNAPSHOTS_LOCATOR, SNAPSHOTS_LABEL).should == true
+		#puts "==>#{text_present(SNAPSHOTS_LOCATOR)}<=="
+		text_displayed?(SNAPSHOTS_LOCATOR, SNAPSHOTS_LABEL).should == true
 	end
 	def goTo_Dashboard
 		visit("/account/dashboard")
-		textDisplayed?(DASHBOARD_LOCATOR, DASHBOARD_LABEL).should == true
+		text_displayed?(DASHBOARD_LOCATOR, DASHBOARD_LABEL).should == true
 	end
 	def goTo_Subaccounts
 		visit("/sub-accounts")
-		textDisplayed?(SUBACCOUNTS_LOCATOR, SUBACCOUNTS_LABEL).should == true
+		text_displayed?(SUBACCOUNTS_LOCATOR, SUBACCOUNTS_LABEL).should == true
 	end
 	def goTo_ActiveTunnels
 		visit("/tunnels")
-		textDisplayed?(ACTIVE_TUNNELS_LOCATOR, ACTIVE_TUNNELS_LABEL).should == true
+		text_displayed?(ACTIVE_TUNNELS_LOCATOR, ACTIVE_TUNNELS_LABEL).should == true
 	end
 	def goTo_EditSettings
 		visit("/account/profile")
-		textDisplayed?(EDIT_SETTINGS_LOCATOR, EDIT_SETTINGS_LABEL).should == true
+		text_displayed?(EDIT_SETTINGS_LOCATOR, EDIT_SETTINGS_LABEL).should == true
 	end
 	def goTo_BillingInfoLink
 		visit("/account/billing-info")
-		textDisplayed?(BILLING_INFO_LOCATOR, BILLING_INFO_LABEL).should == true
+		text_displayed?(BILLING_INFO_LOCATOR, BILLING_INFO_LABEL).should == true
 	end
 end

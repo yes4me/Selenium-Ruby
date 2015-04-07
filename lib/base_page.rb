@@ -41,14 +41,14 @@ class BasePage
 			return false
 		end
 	end
-	def textDisplayed?(locator, elementText)
+	def text_displayed?(locator, elementText)
 		begin
 			return find(locator).text.include?(elementText)
 		rescue
 			return false
 		end
 	end
-	def textPresent(locator)
+	def text_present(locator)
 		begin
 			return find(locator).text
 		rescue

@@ -12,8 +12,8 @@ describe 'WorkSpaceName' do
 
 	before(:each) do
 		ENV['base_url'] = 'https://saucelabs.com'
-		@driver			= Selenium::WebDriver.for :firefox
-		@login			= Login.new(@driver)
+		@driver		= Selenium::WebDriver.for :firefox
+		@login		= Login.new(@driver)
 	end
 	after(:each) do
 		@login.logout
@@ -27,7 +27,7 @@ describe 'WorkSpaceName' do
 		@login.with(USERNAME_INPUT, PASSWORD_INPUT)
 		@login.success_message_present?.should be_true
 
-		@account		= Account.new(@driver)
+		@account	= Account.new(@driver)
 		#@account.goTo_AccountHome
 		@account.goTo_Tests
 		#@account.goTo_Snapshots

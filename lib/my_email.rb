@@ -7,24 +7,14 @@
 #	This example indicates it was created today at 911696 microseconds past 3:24 p.m.
 # ================================================================
 
-class MyClock
-	def self.getDate						#self = static method in Ruby
-		return Time.new.strftime("%Y%m%d")
-	end
-	def self.getTime
-		return Time.new.strftime("%H%M%S")
-	end
-	def self.microSeconds					#Returns the number of microseconds for time
-		return Time.new.usec
-	end
-end
+require_relative 'my_clock'
+
 
 class MyEmail
 	def initialize(recordName)
 		@recordName = recordName
 	end
 	def isEmail(email = @recordName)
-		#regex = /[A-Za-z0-9_\-.]+\@[A-Za-z0-9_\-]+[.][A-Za-z0-9]{2,4}/
 		regex = /(.+)\@(.+)[.][A-Za-z0-9]{2,4}/
 		return email.match(regex)?true:false
 	end
@@ -48,4 +38,3 @@ end
 EMAIL	= "selenium.automation@saucelabs.com"
 @email	= MyEmail.new(EMAIL)
 puts "#{ @email.gen_unique_email_address }"
-puts "#{ @email.isEmail }"
