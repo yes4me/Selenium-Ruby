@@ -37,12 +37,6 @@ class Account < CommonPage
 	BILLING_INFO_LOCATOR	= { css:	'#page-signup>section>header>h1'}
 
 
-	def initialize(driver)
-		#= super(driver)
-		super
-	end
-
-
 	def success_message_present?
 		#Assert: is_displayed?(SUCCESS_MESSAGE).should == true
 		#Verify: is_displayed?(SUCCESS_MESSAGE)

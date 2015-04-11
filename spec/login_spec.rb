@@ -3,7 +3,7 @@
 # Purpose: check all login combinations and see if it passes/fails as expected
 # ================================================================
 
-require_relative '../helper/spec_helper'
+require_relative 'spec_helper'
 require_relative '../helper/login_helper'
 
 
@@ -13,14 +13,11 @@ describe 'WorkSpaceName' do
 	PASSWORD_INPUT	= "SauceLabs2015"
 
 	before(:each) do
-		ENV['base_url'] = 'https://saucelabs.com'
-		@driver		= Selenium::WebDriver.for :firefox
 		@login		= Login.new(@driver)
 		@loginHelper= LoginHelper.new(@login)
 	end
 	after(:each) do
 		@login.logout
-		@driver.quit
 	end
 
 

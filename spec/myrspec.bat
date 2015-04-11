@@ -4,9 +4,7 @@
 # ================================================================
 
 @cls
+
 @echo BEGIN: %Date%, %time%
-
-@rspec %1
-@rem rspec spec
-
+@rspec -r ../config/local.rb %1
 @echo END: %date%, %time%		#This does not appear, due to "rspec". Not sure how to fix

@@ -1,9 +1,10 @@
 # ================================================================
 # 2015/03/12 Thomas
-# Purpose: This rspec logon correctly and go to the different links on the left panel
+# Purpose: correctly login and go to the different links on the left panel
 # ================================================================
 
-require_relative '../helper/spec_helper'
+require_relative 'spec_helper'
+require_relative '../pages/account'
 
 
 describe 'WorkSpaceName' do
@@ -12,13 +13,10 @@ describe 'WorkSpaceName' do
 	PASSWORD_INPUT	= "SauceLabs2015"
 
 	before(:each) do
-		ENV['base_url'] = 'https://saucelabs.com'
-		@driver		= Selenium::WebDriver.for :firefox
 		@login		= Login.new(@driver)
 	end
 	after(:each) do
 		@login.logout
-		@driver.quit
 	end
 
 	it 'main page' do

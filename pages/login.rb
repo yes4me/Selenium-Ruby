@@ -27,11 +27,6 @@ class Login < CommonPage
 	PASSWORD_INPUT	= { id: 'password' }
 
 
-	def initialize(driver)
-		super
-	end
-
-
 	def success_message_present?
 		@account	= Account.new(@driver)
 		@account.success_message_present?

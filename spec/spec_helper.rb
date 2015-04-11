@@ -4,5 +4,13 @@
 # ================================================================
 
 require 'selenium-webdriver'
-require_relative '../pages/login'
-require_relative '../pages/account'
+
+
+RSpec.configure do |config|
+	config.before(:each) do
+		@driver = Selenium::WebDriver.for :firefox
+	end
+	config.after(:each) do
+		@driver.quit
+	end
+end

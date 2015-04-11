@@ -5,7 +5,7 @@
 
 class BasePage
 	def initialize(driver)
-		@driver = driver
+		@driver = driver		#= super(driver)
 		#@driver.manage.timeouts.implicit_wait	= 60
 		#@driver.manage.timeouts.script_timeout	= 60
 		#@driver.manage.timeouts.page_load		= 60
@@ -66,5 +66,14 @@ class BasePage
 	#Others
 	def wait_for(seconds = 15)
 		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
+	end
+	def wait_for(locator, seconds = 15)
+		wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+		begin
+			wait.until { find(locator) }
+			return true
+		rescue
+			return false
+		end
 	end
 end
