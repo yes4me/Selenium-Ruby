@@ -26,22 +26,27 @@ class Login < CommonPage
 	USERNAME_INPUT	= { id: 'username' }
 	PASSWORD_INPUT	= { id: 'password' }
 
+
+	def initialize(driver)
+		super
+	end
+
+
 	def success_message_present?
-		@account		= Account.new(@driver)
-		@account.success_message_present?.should == true
+		@account	= Account.new(@driver)
+		@account.success_message_present?
 	end
 	def failure_message_present?
-		is_displayed?(FAILURE_MESSAGE).should == true
+		is_displayed?(FAILURE_MESSAGE)
 	end
 
 
 	def authentication(username, password)
-		is_displayed?(LOGIN_FORM).should == true
-		is_displayed?(USERNAME_INPUT).should == true
-		is_displayed?(PASSWORD_INPUT).should == true
-
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
 		submit(LOGIN_FORM)
+	end
+	def check_page
+		is_displayed?(LOGIN_FORM) && is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT)
 	end
 end

@@ -3,11 +3,12 @@
 # Purpose: This rspec logon correctly and go to the different links on the left panel
 # ================================================================
 
-require_relative 'spec_helper'
+require_relative '../helper/spec_helper'
 
 
 describe 'WorkSpaceName' do
-	USERNAME_INPUT	= "saucelabs.automation@gmail.com"
+	USEREMAIL_INPUT	= "saucelabs.automation@gmail.com"
+	USERNAME_INPUT	= "sbssgm"
 	PASSWORD_INPUT	= "SauceLabs2015"
 
 	before(:each) do
@@ -24,12 +25,12 @@ describe 'WorkSpaceName' do
 		puts "RUNNING TEST: main page"
 
 		@login.visit("/login")
-		@login.authentication(USERNAME_INPUT, PASSWORD_INPUT)
+		@login.authentication(USEREMAIL_INPUT, PASSWORD_INPUT)
 		@login.success_message_present?.should be_true
 
 		@account	= Account.new(@driver)
-		#@account.goTo_AccountHome
-		@account.goTo_Tests
+		@account.goTo_AccountHome
+		#@account.goTo_Tests
 		#@account.goTo_Snapshots
 		#@account.goTo_Dashboard
 		#@account.goTo_Subaccounts

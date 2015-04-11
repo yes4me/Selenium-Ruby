@@ -21,14 +21,14 @@ class MyEmail
 	def gen_unique_email_address(email = @recordName)
 		if isEmail
 			array		= email.split(/@/)
-			localPart	= array[0]
-			domainPart	= array[1]
+			local_part	= array[0]
+			domain_part	= array[1]
 
 			#This way also works
 			#localPart	= email.match(/(.+)\@/)[1]
 			#domainPart	= email.match(/\@(.+)/)[1]
 
-			return "#{localPart}+#{MyClock.getDate}-#{MyClock.microSeconds}@#{domainPart}"
+			return "#{local_part}+#{MyClock.get_date}-#{MyClock.micro_seconds}@#{domain_part}"
 		end
 	end
 end

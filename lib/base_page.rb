@@ -3,37 +3,43 @@
 # Purpose: set of methods that should universally work on all websites
 # ================================================================
 
-require 'selenium-webdriver'
-
-
 class BasePage
 	def initialize(driver)
 		@driver = driver
-		@driver.manage.timeouts.implicit_wait	= 60
-		@driver.manage.timeouts.script_timeout	= 60
-		@driver.manage.timeouts.page_load		= 60
+		#@driver.manage.timeouts.implicit_wait	= 60
+		#@driver.manage.timeouts.script_timeout	= 60
+		#@driver.manage.timeouts.page_load		= 60
 	end
 
+
+	#General methods
 	def visit(url_path)
 		@driver.get ENV['base_url'] + url_path
 	end
 	def find(locator)
 		return @driver.find_element(locator)
 	end
-	def type(locator, text)
-		find(locator).send_keys(text)
-	end
 	def count_elements(locator)
 		return @driver.find_elements(locator).size()
 	end
+	def get_title
+		return @driver.title
+	end
 
-	def submit(locator)
-		find(locator).submit
+
+	#Buttons & forms
+	def type(locator, text)
+		find(locator).send_keys(text)
 	end
 	def click(locator)
 		find(locator).click
 	end
+	def submit(locator)
+		find(locator).submit
+	end
 
+
+	#Verify
 	def is_displayed?(locator)
 		begin
 			return find(locator).displayed?
@@ -55,11 +61,10 @@ class BasePage
 			return ""
 		end
 	end
+
+
+	#Others
 	def wait_for(seconds = 15)
 		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
-	end
-
-	def get_title
-		return @driver.title
 	end
 end

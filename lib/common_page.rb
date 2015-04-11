@@ -8,7 +8,7 @@ require_relative 'base_page'
 
 class CommonPage < BasePage
 	def initialize(driver)
-		super(driver)
+		super
 	end
 	def logout
 		visit("/logout")
