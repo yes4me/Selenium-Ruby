@@ -6,7 +6,7 @@ require_relative '../lib/common_page'
 
 
 class Account < CommonPage
-	SUCCESS_MESSAGE			= { id: 'accountContainer' }
+	CURRENT_PAGE			= { id: 'accountContainer' }
 
 	ACCOUNT_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[1]/a'}
 	TESTS_LINK				= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[2]/a'}
@@ -37,10 +37,10 @@ class Account < CommonPage
 	BILLING_INFO_LOCATOR	= { css:	'#page-signup>section>header>h1'}
 
 
-	def success_message_present?
-		#Assert: is_displayed?(SUCCESS_MESSAGE).should == true
-		#Verify: is_displayed?(SUCCESS_MESSAGE)
-		is_displayed?(SUCCESS_MESSAGE)
+	def check_page
+		#Assert: is_displayed?(CURRENT_PAGE).should == true
+		#Verify: is_displayed?(CURRENT_PAGE)
+		is_displayed?(CURRENT_PAGE)
 	end
 
 

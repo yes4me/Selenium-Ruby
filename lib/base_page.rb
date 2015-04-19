@@ -1,6 +1,7 @@
 # ================================================================
 # 2015/03/13 Thomas
 # Purpose: set of methods that should universally work on all websites
+# Source: http://anahorny.blogspot.in/2011/08/selenium-webdriver-ruby-tutorial.html
 # ================================================================
 
 class BasePage
@@ -33,6 +34,15 @@ class BasePage
 	end
 	def click(locator)
 		find(locator).click
+	end
+	def select(locator, optionValue)
+		options = find(locator).find_elements(:tag_name => "option");
+		options.each do |g|
+			if g.text == optionValue
+				g.click
+				break
+			end
+		end
 	end
 	def submit(locator)
 		find(locator).submit

@@ -20,28 +20,29 @@ require_relative 'account'
 
 
 class Login < CommonPage
-	FAILURE_MESSAGE	= { css: '.alert.alert-error' }
+	USERNAME_DEFAULT		= "sbssgm"
+	PASSWORD_DEFAULT		= "SauceLabs2015"
 
-	LOGIN_FORM 		= { id: 'login' }
-	USERNAME_INPUT	= { id: 'username' }
-	PASSWORD_INPUT	= { id: 'password' }
+	FAILURE_MESSAGE			= { css: '.alert.alert-error' }
+	USERNAME_INPUT			= { id: 'username' }
+	PASSWORD_INPUT			= { id: 'password' }
+	SUBMIT_BUTTON 			= { id: 'login' }
 
 
+	def check_page
+		is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT) &&  is_displayed?(SUBMIT_BUTTON)
+	end
+
+	def authentication(username = USERNAME_DEFAULT, password = PASSWORD_DEFAULT)
+		type(USERNAME_INPUT, username)
+		type(PASSWORD_INPUT, password)
+		submit(SUBMIT_BUTTON)
+	end
 	def success_message_present?
 		@account	= Account.new(@driver)
-		@account.success_message_present?
+		@account.check_page
 	end
 	def failure_message_present?
 		is_displayed?(FAILURE_MESSAGE)
-	end
-
-
-	def authentication(username, password)
-		type(USERNAME_INPUT, username)
-		type(PASSWORD_INPUT, password)
-		submit(LOGIN_FORM)
-	end
-	def check_page
-		is_displayed?(LOGIN_FORM) && is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT)
 	end
 end
