@@ -11,6 +11,6 @@ RSpec.configure do |config|
 		@driver = Selenium::WebDriver.for :firefox
 	end
 	config.after(:each) do
-		@driver.quit
+		#@driver.quit
 	end
 end

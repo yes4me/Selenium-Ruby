@@ -12,7 +12,7 @@ describe 'WorkSpaceName' do
 		@signuptrial	= SignUpTrial.new(@driver)
 	end
 	after(:each) do
-		@signuptrial.logout
+		#@signuptrial.logout
 	end
 
 	it 'main page' do
@@ -22,6 +22,6 @@ describe 'WorkSpaceName' do
 		@signuptrial.user_info()
 		@signuptrial.company_info
 		@signuptrial.authentication()
-		@signuptrial.submit_form
+		@signuptrial.submit_form()
 	end
 end

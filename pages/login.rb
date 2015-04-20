@@ -20,10 +20,11 @@ require_relative 'account'
 
 
 class Login < CommonPage
-	USERNAME_DEFAULT		= "sbssgm"
-	PASSWORD_DEFAULT		= "SauceLabs2015"
+	FAILURE_PAGE			= { css: '.alert.alert-error' }
 
-	FAILURE_MESSAGE			= { css: '.alert.alert-error' }
+	USERNAME_VALUE			= ENV['username_default']
+	PASSWORD_VALUE			= ENV['password_default']
+
 	USERNAME_INPUT			= { id: 'username' }
 	PASSWORD_INPUT			= { id: 'password' }
 	SUBMIT_BUTTON 			= { id: 'login' }
@@ -33,7 +34,7 @@ class Login < CommonPage
 		is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT) &&  is_displayed?(SUBMIT_BUTTON)
 	end
 
-	def authentication(username = USERNAME_DEFAULT, password = PASSWORD_DEFAULT)
+	def authentication(username = USERNAME_VALUE, password = PASSWORD_VALUE)
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
 		submit(SUBMIT_BUTTON)
@@ -43,6 +44,6 @@ class Login < CommonPage
 		@account.check_page
 	end
 	def failure_message_present?
-		is_displayed?(FAILURE_MESSAGE)
+		is_displayed?(FAILURE_PAGE)
 	end
 end

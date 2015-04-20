@@ -11,13 +11,13 @@ require_relative '../lib/my_email'
 class SignUpTrial < CommonPage
 	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
 
-	FIRST_NAME_DEFAULT		= "John"
-	LAST_NAME_DEFAULT		= "Doe"
-	EMAIL_DEFAULT			= MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
-	COMPANY_DEFAULT			= "#{FIRST_NAME_DEFAULT} #{LAST_NAME_DEFAULT}"
-	COMPANY_SIZE_DEFAULT	= "Just Me"
-	USERNAME_DEFAULT		= "sbssgm"
-	PASSWORD_DEFAULT		= "SauceLabs2015"
+	FIRST_NAME_VALUE		= "John"
+	LAST_NAME_VALUE			= "Doe"
+	EMAIL_VALUE				= MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
+	COMPANY_VALUE			= "#{FIRST_NAME_VALUE} #{LAST_NAME_VALUE}"
+	COMPANY_SIZE_VALUE		= "Just Me"
+	USERNAME_VALUE			= "#{FIRST_NAME_VALUE}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
+	PASSWORD_VALUE			= ENV['password_default']
 
 	FIRST_NAME_INPUT		= { id: 'first_name' }
 	LAST_NAME_INPUT			= { id: 'last_name' }
@@ -35,17 +35,17 @@ class SignUpTrial < CommonPage
 		is_displayed?(CURRENT_PAGE)
 	end
 
-	def user_info(firstName = FIRST_NAME_DEFAULT, lastName = LAST_NAME_DEFAULT, email = EMAIL_DEFAULT)
+	def user_info(firstName = FIRST_NAME_VALUE, lastName = LAST_NAME_VALUE, email = EMAIL_VALUE)
 		type(FIRST_NAME_INPUT, firstName)
 		type(LAST_NAME_INPUT, lastName)
 		type(EMAIL_INPUT, email)
 	end
-	def company_info(company = COMPANY_DEFAULT, company_size = COMPANY_SIZE_DEFAULT)
+	def company_info(company = COMPANY_VALUE, company_size = COMPANY_SIZE_VALUE)
 		type(COMPANY_INPUT, company)
 		puts "==>#{company_size}"
 		select(COMPANY_SIZE_OPTION, company_size)
 	end
-	def authentication(username = USERNAME_DEFAULT, password = PASSWORD_DEFAULT)
+	def authentication(username = USERNAME_VALUE, password = PASSWORD_VALUE)
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
 		type(PASSWORD_CONFIRM_INPUT, password)

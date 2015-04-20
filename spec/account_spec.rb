@@ -8,9 +8,9 @@ require_relative '../pages/account'
 
 
 describe 'WorkSpaceName' do
-	USEREMAIL_INPUT	= "saucelabs.automation@gmail.com"
-	USERNAME_INPUT	= "sbssgm"
-	PASSWORD_INPUT	= "SauceLabs2015"
+	USEREMAIL_VALUE			= ENV['email_default']
+	USERNAME_VALUE			= ENV['username_default']
+	PASSWORD_VALUE			= ENV['password_default']
 
 	before(:each) do
 		@login		= Login.new(@driver)
@@ -23,7 +23,7 @@ describe 'WorkSpaceName' do
 		puts "RUNNING TEST: main page"
 
 		@login.visit("/login")
-		@login.authentication(USEREMAIL_INPUT, PASSWORD_INPUT)
+		@login.authentication(USEREMAIL_VALUE, PASSWORD_VALUE)
 		@login.success_message_present?.should be_true
 
 		@account	= Account.new(@driver)
