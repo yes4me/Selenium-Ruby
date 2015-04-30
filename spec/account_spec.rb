@@ -4,14 +4,11 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative '../pages/account'
+require_relative FileNames::PAGES_LOGIN
+require_relative FileNames::PAGES_ACCOUNT
 
 
-describe 'WorkSpaceName' do
-	USEREMAIL_VALUE			= ENV['email_default']
-	USERNAME_VALUE			= ENV['username_default']
-	PASSWORD_VALUE			= ENV['password_default']
-
+describe 'Login to account' do
 	before(:each) do
 		@login		= Login.new(@driver)
 	end
@@ -20,15 +17,15 @@ describe 'WorkSpaceName' do
 	end
 
 	it 'main page' do
-		puts "RUNNING TEST: main page"
+		print "RUNNING TEST: main page\n"
 
-		@login.visit("/login")
-		@login.authentication(USEREMAIL_VALUE, PASSWORD_VALUE)
+		@login.visit
+		@login.authentication
 		@login.success_message_present?.should be_true
 
 		@account	= Account.new(@driver)
-		@account.goTo_AccountHome
-		#@account.goTo_Tests
+		#@account.goTo_AccountHome
+		@account.goTo_Tests
 		#@account.goTo_Snapshots
 		#@account.goTo_Dashboard
 		#@account.goTo_Subaccounts

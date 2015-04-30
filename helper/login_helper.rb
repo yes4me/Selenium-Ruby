@@ -3,7 +3,7 @@
 # Purpose: remove redundant codes
 # ================================================================
 
-require_relative '../pages/login'
+require_relative FileNames::PAGES_LOGIN
 
 
 class LoginHelper
@@ -11,10 +11,11 @@ class LoginHelper
 		@login = login
 	end
 
-	def login_test(userName, passWord, pass)
-		@login.visit("/login")
+	#Optional hash parameter so that you can override one or more defaults if needed
+	def login_test(pass, parameters = {})
+		@login.visit
 		#@login.check_page.should be_true
-		@login.authentication(userName, passWord)
+		@login.authentication(parameters)
 		if pass
 			@login.success_message_present?.should == true
 		else

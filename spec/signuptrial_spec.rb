@@ -4,24 +4,26 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative '../pages/signuptrial'
+require_relative FileNames::PAGES_LOGIN
+require_relative FileNames::PAGES_SIGNUP_TRIAL
 
 
-describe 'WorkSpaceName' do
+describe 'Signup Trial' do
 	before(:each) do
+		@login			= Login.new(@driver)
 		@signuptrial	= SignUpTrial.new(@driver)
 	end
 	after(:each) do
-		#@signuptrial.logout
+		#@login.logout
 	end
 
-	it 'main page' do
-		puts "RUNNING TEST: main page"
+	it 'positive signup' do
+		print "RUNNING TEST: positive signup\n"
 
-		@signuptrial.visit("/signup/trial")
-		@signuptrial.user_info()
-		@signuptrial.company_info
-		@signuptrial.authentication()
+		@signuptrial.visit()
+		@signuptrial.type_user_info()
+		@signuptrial.type_company_info()
+		@signuptrial.type_authentication()
 		@signuptrial.submit_form()
 	end
 end

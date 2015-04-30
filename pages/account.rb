@@ -2,7 +2,7 @@
 # 2015/03/13 Thomas
 # ================================================================
 
-require_relative '../lib/common_page'
+require_relative FileNames::LIB_COMMON_PAGE
 
 
 class Account < CommonPage

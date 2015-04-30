@@ -4,9 +4,14 @@
 # ================================================================
 
 require 'selenium-webdriver'
+require_relative '../config/constants'
+require_relative '../config/filenames'
 
 
 RSpec.configure do |config|
+	config.include Constants
+	config.include FileNames
+
 	config.before(:each) do
 		@driver = Selenium::WebDriver.for :firefox
 	end

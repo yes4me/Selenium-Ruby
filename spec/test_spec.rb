@@ -4,13 +4,15 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative '../helper/login_helper'
-require_relative '../lib/my_clock'
+require_relative FileNames::HELPER_LOGIN
+require_relative FileNames::PAGES_TEST
 
 
-describe 'WorkSpaceName' do
+describe 'Work Space Name' do
+	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
+
 	before(:each) do
-		#@login		= Login.new(@driver)
+		@login		= Login.new(@driver)
 	end
 	after(:each) do
 		#@login.logout
@@ -18,7 +20,11 @@ describe 'WorkSpaceName' do
 
 
 	it 'test' do
-		tmp = "#{MyClock.get_date}-#{MyClock.micro_seconds}"
-		puts "tmp=#{tmp}"
+		@hello = Test.new.a_method
+		print "-->#{@hello}<--\n"
+
+		puts "==>#{USERNAME_VALUE}<=="
+		sleep(3)
+		print "==>#{USERNAME_VALUE}<=="
 	end
 end

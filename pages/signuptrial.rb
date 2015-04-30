@@ -4,20 +4,17 @@
 # Sign up using only users with email addresses of the format selenium.automation+yyyymmdd-hhmm-ssssss@gmail.com, such as saucelabs.automation+20150407-0759-173060@gmail.com
 # ================================================================
 
-require_relative '../lib/common_page'
-require_relative '../lib/my_email'
+require_relative FileNames::LIB_COMMON_PAGE
+require_relative FileNames::LIB_MY_EMAIL
 
 
 class SignUpTrial < CommonPage
 	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
 
-	FIRST_NAME_VALUE		= "John"
-	LAST_NAME_VALUE			= "Doe"
-	EMAIL_VALUE				= MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
+	FIRST_NAME_VALUE		= Constants::FIRST_NAME_DEFAULT
+	LAST_NAME_VALUE			= Constants::LAST_NAME_DEFAULT
 	COMPANY_VALUE			= "#{FIRST_NAME_VALUE} #{LAST_NAME_VALUE}"
-	COMPANY_SIZE_VALUE		= "Just Me"
 	USERNAME_VALUE			= "#{FIRST_NAME_VALUE}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
-	PASSWORD_VALUE			= ENV['password_default']
 
 	FIRST_NAME_INPUT		= { id: 'first_name' }
 	LAST_NAME_INPUT			= { id: 'last_name' }
@@ -30,25 +27,40 @@ class SignUpTrial < CommonPage
 
 	SUBMIT_BUTTON			= { id: 'submit-button' }
 
-
+	#Overwrite the base_page.visit()
+	def visit(url = "/signup/trial")
+		super
+	end
 	def check_page
 		is_displayed?(CURRENT_PAGE)
 	end
 
-	def user_info(firstName = FIRST_NAME_VALUE, lastName = LAST_NAME_VALUE, email = EMAIL_VALUE)
-		type(FIRST_NAME_INPUT, firstName)
-		type(LAST_NAME_INPUT, lastName)
+
+	def type_user_info(parameters = {})
+		first_name	= parameters[:first_name] || FIRST_NAME_VALUE
+		last_name	= parameters[:last_name] || LAST_NAME_VALUE
+		email		= parameters[:email] || MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
+
+		type(FIRST_NAME_INPUT, first_name)
+		type(LAST_NAME_INPUT, last_name)
 		type(EMAIL_INPUT, email)
 	end
-	def company_info(company = COMPANY_VALUE, company_size = COMPANY_SIZE_VALUE)
-		type(COMPANY_INPUT, company)
-		puts "==>#{company_size}"
+
+	def type_company_info(parameters = {})
+		company_name	= parameters[:company_name] || COMPANY_VALUE
+		company_size	= parameters[:company_size] || "Just Me"
+
+		type(COMPANY_INPUT, company_name)
 		select(COMPANY_SIZE_OPTION, company_size)
 	end
-	def authentication(username = USERNAME_VALUE, password = PASSWORD_VALUE)
+	def type_authentication(parameters = {})
+		username			= parameters[:username] || USERNAME_VALUE
+		password			= parameters[:password] || Constants::PASSWORD_DEFAULT
+		password_confirm	= parameters[:password_confirm] || password
+
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
-		type(PASSWORD_CONFIRM_INPUT, password)
+		type(PASSWORD_CONFIRM_INPUT, password_confirm)
 	end
 	def submit_form
 		submit(SUBMIT_BUTTON)

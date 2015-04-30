@@ -7,7 +7,7 @@
 #	This example indicates it was created today at 911696 microseconds past 3:24 p.m.
 # ================================================================
 
-require_relative 'my_clock'
+require_relative FileNames::LIB_MY_CLOCK
 
 
 class MyEmail
@@ -37,4 +37,4 @@ end
 
 #EMAIL	= "selenium.automation@saucelabs.com"
 #@email	= MyEmail.new(EMAIL)
-#puts "#{ @email.gen_unique_email_address }"
+#print "#{ @email.gen_unique_email_address }"

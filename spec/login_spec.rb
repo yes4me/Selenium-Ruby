@@ -4,13 +4,13 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative '../helper/login_helper'
+require_relative FileNames::HELPER_LOGIN
 
 
-describe 'WorkSpaceName' do
-	USEREMAIL_VALUE			= ENV['email_default']
-	USERNAME_VALUE			= ENV['username_default']
-	PASSWORD_VALUE			= ENV['password_default']
+describe 'Test login page' do
+	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
+	PASSWORD_VALUE			= Constants::PASSWORD_DEFAULT
+	USEREMAIL_VALUE			= Constants::EMAIL_DEFAULT
 
 	before(:each) do
 		@login		= Login.new(@driver)
@@ -21,25 +21,25 @@ describe 'WorkSpaceName' do
 	end
 
 
-	it 'positive-email' do
-		puts "RUNNING TEST: positive-email"
-		@loginHelper.login_test(USEREMAIL_VALUE, PASSWORD_VALUE, true)
-	end
 	it 'positive-username' do
-		puts "RUNNING TEST: positive-username"
-		@loginHelper.login_test(USERNAME_VALUE, PASSWORD_VALUE, true)
+		print "RUNNING TEST: positive-username\n"
+		@loginHelper.login_test(true)
+	end
+	it 'positive-email' do
+		print "RUNNING TEST: positive-email\n"
+		@loginHelper.login_test(true, :username => USEREMAIL_VALUE)
 	end
 	it 'positive-blank-padded-email' do
-		puts "RUNNING TEST: positive-blank-padded-email"
+		print "RUNNING TEST: positive-blank-padded-email\n"
 		#should pass (=true), but actually fail(false) = known server bug. But we still need to check for "true"!
-		@loginHelper.login_test(" #{USEREMAIL_VALUE} ", PASSWORD_VALUE, true)
+		@loginHelper.login_test(true, :username => " #{USEREMAIL_VALUE} ")
 	end
 	it 'negative-email' do
-		puts "RUNNING TEST: negative-email"
-		@loginHelper.login_test("asdf@asd.com", PASSWORD_VALUE, false)
+		print "RUNNING TEST: negative-email\n"
+		@loginHelper.login_test(false, :username => "xxxxx@xyz.com")
 	end
 	it 'negative-password' do
-		puts "RUNNING TEST: negative-password"
-		@loginHelper.login_test(USEREMAIL_VALUE, "asdf", false)
+		print "RUNNING TEST: negative-password\n"
+		@loginHelper.login_test(false, :password => "xxxxx")
 	end
 end
