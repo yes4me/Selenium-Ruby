@@ -9,6 +9,8 @@ require_relative FileNames::LIB_MY_EMAIL
 
 
 class SignUpTrial < CommonPage
+	FAILURE_PAGE			= { css: '.alert.alert-error' }
+
 	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
 
 	FIRST_NAME_VALUE		= Constants::FIRST_NAME_DEFAULT
@@ -45,7 +47,6 @@ class SignUpTrial < CommonPage
 		type(LAST_NAME_INPUT, last_name)
 		type(EMAIL_INPUT, email)
 	end
-
 	def type_company_info(parameters = {})
 		company_name	= parameters[:company_name] || COMPANY_VALUE
 		company_size	= parameters[:company_size] || "Just Me"
@@ -62,7 +63,16 @@ class SignUpTrial < CommonPage
 		type(PASSWORD_INPUT, password)
 		type(PASSWORD_CONFIRM_INPUT, password_confirm)
 	end
+
+
 	def submit_form
 		submit(SUBMIT_BUTTON)
+	end
+	def success_message_present?
+		account	= Account.new(@driver)
+		return account.check_page
+	end
+	def failure_message_present?
+		return is_displayed?(FAILURE_PAGE)
 	end
 end
