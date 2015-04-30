@@ -34,7 +34,7 @@ class SignUpTrial < CommonPage
 		super
 	end
 	def check_page
-		is_displayed?(CURRENT_PAGE)
+		return is_displayed?(CURRENT_PAGE)
 	end
 
 
@@ -63,11 +63,11 @@ class SignUpTrial < CommonPage
 		type(PASSWORD_INPUT, password)
 		type(PASSWORD_CONFIRM_INPUT, password_confirm)
 	end
-
-
 	def submit_form
 		submit(SUBMIT_BUTTON)
 	end
+
+
 	def success_message_present?
 		account	= Account.new(@driver)
 		return account.check_page

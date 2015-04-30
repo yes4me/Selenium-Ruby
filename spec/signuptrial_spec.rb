@@ -20,10 +20,10 @@ describe 'Signup Trial' do
 	it 'positive signup' do
 		print "RUNNING TEST: positive signup\n"
 
-		@signuptrial.visit()
-		@signuptrial.type_user_info()
-		@signuptrial.type_company_info()
-		@signuptrial.type_authentication()
-		@signuptrial.submit_form()
+		@signuptrial.visit
+		@signuptrial.type_user_info
+		@signuptrial.type_company_info
+		@signuptrial.type_authentication
+		@signuptrial.submit_form
 	end
 end

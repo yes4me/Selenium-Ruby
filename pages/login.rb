@@ -26,6 +26,7 @@ class Login < CommonPage
 	PASSWORD_INPUT		= { id: 'password' }
 	SUBMIT_BUTTON		= { id: 'login' }
 
+
 	#Overwrite the base_page.visit()
 	def visit(url_path = "/login")
 		super
@@ -33,6 +34,7 @@ class Login < CommonPage
 	def check_page
 		return is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT) &&  is_displayed?(SUBMIT_BUTTON)
 	end
+
 
 	def authentication(parameters = {})
 		username	= parameters[:username] || Constants::USERNAME_DEFAULT
@@ -42,6 +44,8 @@ class Login < CommonPage
 		type(PASSWORD_INPUT, password)
 		submit(SUBMIT_BUTTON)
 	end
+
+
 	def success_message_present?
 		account	= Account.new(@driver)
 		return account.check_page
