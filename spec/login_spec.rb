@@ -13,8 +13,8 @@ describe 'Test login page' do
 	USEREMAIL_VALUE			= Constants::EMAIL_DEFAULT
 
 	before(:each) do
-		@login		= Login.new(@driver)
-		@loginHelper= LoginHelper.new(@login)
+		@login				= Login.new(@driver)
+		@loginHelper		= LoginHelper.new(@driver)
 	end
 	after(:each) do
 		@login.logout

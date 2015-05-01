@@ -8,6 +8,7 @@ module FileNames
 	CONST_FILENAMES = "../config/filenames.rb"
 
 	HELPER_LOGIN = "../helper/login_helper.rb"
+	HELPER_SIGNUP = "../helper/signuptrial_helper.rb"
 	#HELPER_UTILS_PROPERTY = "../helper/utils_property_helper.rb"	#not used yet
 
 	LIB_BASE_PAGE = "../lib/base_page.rb"

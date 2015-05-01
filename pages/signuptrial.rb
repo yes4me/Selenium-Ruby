@@ -1,6 +1,6 @@
 # ================================================================
 # 2015/04/16
-# Purpose: Write a “happy path” signup test to register a new TRIAL user.
+# Purpose: To register a new TRIAL user.
 # Sign up using only users with email addresses of the format selenium.automation+yyyymmdd-hhmm-ssssss@gmail.com, such as saucelabs.automation+20150407-0759-173060@gmail.com
 # ================================================================
 
@@ -8,9 +8,8 @@ require_relative FileNames::LIB_COMMON_PAGE
 require_relative FileNames::LIB_MY_EMAIL
 
 
-class SignUpTrial < CommonPage
-	FAILURE_PAGE			= { css: '.alert.alert-error' }
-
+class SignupTrial < CommonPage
+	FAILURE_PAGE			= { css: '.error-text' }
 	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
 
 	FIRST_NAME_VALUE		= Constants::FIRST_NAME_DEFAULT
@@ -30,7 +29,7 @@ class SignUpTrial < CommonPage
 	SUBMIT_BUTTON			= { id: 'submit-button' }
 
 	#Overwrite the base_page.visit()
-	def visit(url = "/signup/trial")
+	def visit(url_path = "/signup/trial")
 		super
 	end
 	def check_page

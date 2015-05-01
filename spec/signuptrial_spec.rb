@@ -5,13 +5,14 @@
 
 require_relative 'spec_helper'
 require_relative FileNames::PAGES_LOGIN
-require_relative FileNames::PAGES_SIGNUP_TRIAL
+require_relative FileNames::HELPER_SIGNUP
 
 
-describe 'Signup Trial' do
+
+describe 'Test Signup Trial' do
 	before(:each) do
-		@login			= Login.new(@driver)
-		@signuptrial	= SignUpTrial.new(@driver)
+		@login				= Login.new(@driver)
+		@signupTrialHelper	= SignupTrialHelper.new(@driver)
 	end
 	after(:each) do
 		#@login.logout
@@ -19,11 +20,34 @@ describe 'Signup Trial' do
 
 	it 'positive signup' do
 		print "RUNNING TEST: positive signup\n"
-
-		@signuptrial.visit
-		@signuptrial.type_user_info
-		@signuptrial.type_company_info
-		@signuptrial.type_authentication
-		@signuptrial.submit_form
+		@signupTrialHelper.signup_trial_test(true)
+	end
+	it 'negative - pre-existing email' do
+		print "RUNNING TEST: negative - pre-existing email\n"
+		@signupTrialHelper.signup_trial_test(false, :email => Constants::EMAIL_DEFAULT)
+	end
+	it 'negative - pre-existing username' do
+		print "RUNNING TEST: negative - pre-existing username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => Constants::USERNAME_DEFAULT)
+	end
+	it 'negative - invalid character in username' do
+		print "RUNNING TEST: negative - invalid character in username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => "#{Constants::USERNAME_DEFAULT}%#{Constants::USERNAME_DEFAULT}")
+	end
+	it 'negative - invalid starting character in username' do
+		print "RUNNING TEST: negative - invalid starting character in username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => "%#{Constants::USERNAME_DEFAULT}")
+	end
+	it 'negative - 1-char username' do
+		print "RUNNING TEST: negative - 1-char username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => "X")
+	end
+	it 'negative - 2-char username' do
+		print "RUNNING TEST: negative - 2-char username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => "XX")
+	end
+	it 'negative - 21-char username' do
+		print "RUNNING TEST: negative - 21-char username\n"
+		@signupTrialHelper.signup_trial_test(false, :username => "X12345678901234567890")
 	end
 end

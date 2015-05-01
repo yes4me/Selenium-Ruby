@@ -12,7 +12,7 @@ describe 'Work Space Name' do
 	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
 
 	before(:each) do
-		@login		= Login.new(@driver)
+		#@login		= Login.new(@driver)
 	end
 	after(:each) do
 		#@login.logout
@@ -26,5 +26,6 @@ describe 'Work Space Name' do
 		puts "==>#{USERNAME_VALUE}<=="
 		sleep(3)
 		print "==>#{USERNAME_VALUE}<=="
+		print "==>#{Dir.pwd}<=="
 	end
 end
