@@ -4,4 +4,4 @@
 # ================================================================
 
 ENV['base_url']			||= 'https://saucelabs.com'
-ENV['browser']			||= 'firefox'
+ENV['browser']			||= 'firefox'				#Possible value: 'firefox' or 'chrome'

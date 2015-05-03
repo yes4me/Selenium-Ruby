@@ -20,34 +20,34 @@ describe 'Test Signup Trial' do
 
 	it 'positive signup' do
 		print "RUNNING TEST: positive signup\n"
-		@signupTrialHelper.signup_trial_test(true)
+		@signupTrialHelper.test(true)
 	end
 	it 'negative - pre-existing email' do
 		print "RUNNING TEST: negative - pre-existing email\n"
-		@signupTrialHelper.signup_trial_test(false, :email => Constants::EMAIL_DEFAULT)
+		@signupTrialHelper.test(false, :email => Constants::EMAIL_DEFAULT)
 	end
 	it 'negative - pre-existing username' do
 		print "RUNNING TEST: negative - pre-existing username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => Constants::USERNAME_DEFAULT)
+		@signupTrialHelper.test(false, :username => Constants::USERNAME_DEFAULT)
 	end
 	it 'negative - invalid character in username' do
 		print "RUNNING TEST: negative - invalid character in username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => "#{Constants::USERNAME_DEFAULT}%#{Constants::USERNAME_DEFAULT}")
+		@signupTrialHelper.test(false, :username => "#{Constants::USERNAME_DEFAULT}%#{Constants::USERNAME_DEFAULT}")
 	end
 	it 'negative - invalid starting character in username' do
 		print "RUNNING TEST: negative - invalid starting character in username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => "%#{Constants::USERNAME_DEFAULT}")
+		@signupTrialHelper.test(false, :username => "%#{Constants::USERNAME_DEFAULT}")
 	end
 	it 'negative - 1-char username' do
 		print "RUNNING TEST: negative - 1-char username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => "X")
+		@signupTrialHelper.test(false, :username => "X")
 	end
 	it 'negative - 2-char username' do
 		print "RUNNING TEST: negative - 2-char username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => "XX")
+		@signupTrialHelper.test(false, :username => "XX")
 	end
 	it 'negative - 21-char username' do
 		print "RUNNING TEST: negative - 21-char username\n"
-		@signupTrialHelper.signup_trial_test(false, :username => "X12345678901234567890")
+		@signupTrialHelper.test(false, :username => "X12345678901234567890")
 	end
 end

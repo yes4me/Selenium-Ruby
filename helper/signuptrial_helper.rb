@@ -8,7 +8,7 @@ require_relative FileNames::PAGES_SIGNUP_TRIAL
 
 class SignupTrialHelper < SignupTrial
 	#Optional hash parameter so that you can override one or more defaults if needed
-	def signup_trial_test(pass, parameters = {})
+	def test(pass, parameters = {})
 		visit
 
 		type_user_info(parameters)

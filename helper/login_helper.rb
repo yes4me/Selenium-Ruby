@@ -8,7 +8,7 @@ require_relative FileNames::PAGES_LOGIN
 
 class LoginHelper < Login
 	#Optional hash parameter so that you can override one or more defaults if needed
-	def login_test(pass, parameters = {})
+	def test(pass, parameters = {})
 		visit
 		#@login.check_page.should be_true
 		authentication(parameters)

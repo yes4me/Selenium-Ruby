@@ -28,6 +28,7 @@ class SignupTrial < CommonPage
 
 	SUBMIT_BUTTON			= { id: 'submit-button' }
 
+
 	#Overwrite the base_page.visit()
 	def visit(url_path = "/signup/trial")
 		super
