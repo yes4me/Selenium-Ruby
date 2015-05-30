@@ -4,28 +4,26 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative FileNames::HELPER_LOGIN
-require_relative FileNames::PAGES_TEST
+require_relative FileNames::PAGES_LOGIN
+require_relative FileNames::HELPER_SIGNUP
 
 
-describe 'Work Space Name' do
-	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
 
+describe 'Test Signup Trial' do
 	before(:each) do
-		#@login		= Login.new(@driver)
+		@login				= Login.new(@driver)
+		@SignupTrialHelper	= SignupTrialHelper.new(@driver)
 	end
 	after(:each) do
 		#@login.logout
 	end
 
-
-	it 'test' do
-		@hello = Test.new.a_method
-		print "-->#{@hello}<--\n"
-
-		puts "==>#{USERNAME_VALUE}<=="
-		sleep(3)
-		print "==>#{USERNAME_VALUE}<=="
-		print "==>#{Dir.pwd}<=="
+	it 'signup1' do
+		print "RUNNING TEST1\n"
+		@SignupTrialHelper.test(true)
+	end
+	it 'signup2' do
+		print "RUNNING TEST2\n"
+		@SignupTrialHelper.test(true)
 	end
 end

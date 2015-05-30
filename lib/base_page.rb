@@ -35,14 +35,20 @@ class BasePage
 	def click(locator)
 		find(locator).click
 	end
-	def select(locator, optionValue)
-		options = find(locator).find_elements(:tag_name => "option");
-		options.each do |g|
-			if g.text == optionValue
-				g.click
-				break
-			end
-		end
+	def select(locator, optionText)
+		dropdown = find(locator)
+
+		#This also works:
+		#options = dropdown.find_elements(:tag_name => "option");
+		#options.each do |g|
+		#	if g.text == optionText
+		#		g.click
+		#		break
+		#	end
+		#end
+
+		select_list = Selenium::WebDriver::Support::Select.new(dropdown)
+		select_list.select_by(:text, optionText)
 	end
 	def submit(locator)
 		find(locator).submit

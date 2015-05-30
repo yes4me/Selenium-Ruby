@@ -12,11 +12,6 @@ class SignupTrial < CommonPage
 	FAILURE_PAGE			= { css: '.error-text' }
 	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
 
-	FIRST_NAME_VALUE		= Constants::FIRST_NAME_DEFAULT
-	LAST_NAME_VALUE			= Constants::LAST_NAME_DEFAULT
-	COMPANY_VALUE			= "#{FIRST_NAME_VALUE} #{LAST_NAME_VALUE}"
-	USERNAME_VALUE			= "#{FIRST_NAME_VALUE}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
-
 	FIRST_NAME_INPUT		= { id: 'first_name' }
 	LAST_NAME_INPUT			= { id: 'last_name' }
 	EMAIL_INPUT				= { id: 'email' }
@@ -39,8 +34,8 @@ class SignupTrial < CommonPage
 
 
 	def type_user_info(parameters = {})
-		first_name	= parameters[:first_name] || FIRST_NAME_VALUE
-		last_name	= parameters[:last_name] || LAST_NAME_VALUE
+		first_name	= parameters[:first_name] || Constants::FIRST_NAME_DEFAULT
+		last_name	= parameters[:last_name] || Constants::LAST_NAME_DEFAULT
 		email		= parameters[:email] || MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
 
 		type(FIRST_NAME_INPUT, first_name)
@@ -48,14 +43,14 @@ class SignupTrial < CommonPage
 		type(EMAIL_INPUT, email)
 	end
 	def type_company_info(parameters = {})
-		company_name	= parameters[:company_name] || COMPANY_VALUE
+		company_name	= parameters[:company_name] || "#{Constants::FIRST_NAME_DEFAULT} #{Constants::LAST_NAME_DEFAULT}"
 		company_size	= parameters[:company_size] || "Just Me"
 
 		type(COMPANY_INPUT, company_name)
 		select(COMPANY_SIZE_OPTION, company_size)
 	end
 	def type_authentication(parameters = {})
-		username			= parameters[:username] || USERNAME_VALUE
+		username			= parameters[:username] || "#{Constants::FIRST_NAME_DEFAULT}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
 		password			= parameters[:password] || Constants::PASSWORD_DEFAULT
 		password_confirm	= parameters[:password_confirm] || password
 
