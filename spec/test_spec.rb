@@ -5,7 +5,7 @@
 
 require_relative 'spec_helper'
 require_relative FileNames::PAGES_LOGIN
-require_relative FileNames::HELPER_SIGNUP
+require_relative FileNames::HELPER_SIGNUPTRIAL
 
 
 

@@ -10,4 +10,7 @@ module Constants
 	FIRST_NAME_DEFAULT = "Joe"
 	LAST_NAME_DEFAULT = "Doe"
 	EMAIL_DEFAULT = "saucelabs.automation@gmail.com"
+
+	COMPANY_SIZE_DEFAULT = "Just Me"
+	PLAN_OPTION_DEFAULT = "Free - $0"
 end

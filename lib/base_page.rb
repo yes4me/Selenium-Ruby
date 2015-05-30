@@ -29,6 +29,9 @@ class BasePage
 
 
 	#Buttons & forms
+	def clear(locator)
+		find(locator).clear()
+	end
 	def type(locator, text)
 		find(locator).send_keys(text)
 	end

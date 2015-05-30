@@ -1,11 +1,11 @@
 # ================================================================
 # 2015/04/16 Thomas
-# Purpose: correctly login and go to the different links on the left panel
+# Purpose: Create a “Happy Path” test to sign up a free user on https://saucelabs.com/signup/trial
 # ================================================================
 
 require_relative 'spec_helper'
 require_relative FileNames::PAGES_LOGIN
-require_relative FileNames::HELPER_SIGNUP
+require_relative FileNames::HELPER_SIGNUPTRIAL
 
 
 
