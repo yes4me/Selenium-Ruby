@@ -11,15 +11,12 @@ class SignupHelper < Signup
 	def test(pass, parameters = {})
 		visit
 
-		select_plan()
-		type_user_info(parameters)
-		type_company_info(parameters)
-		type_authentication(parameters)
-		#submit_form
-		#if (pass==true)
-		#	success_message_present?.should == true
-		#else
-		#	failure_message_present?.should == true
-		#end
+		fill_form(parameters)
+		submit_form
+		if (pass==true)
+			success_message_present?.should == true
+		else
+			failure_message_present?.should == true
+		end
 	end
 end

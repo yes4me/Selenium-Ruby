@@ -16,9 +16,7 @@ class SignupTrialHelper < SignupTrial
 		#	parameters[:email] = MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
 		#end
 
-		type_user_info(parameters)
-		type_company_info(parameters)
-		type_authentication(parameters)
+		fill_form(parameters)
 		submit_form
 		if (pass==true)
 			success_message_present?.should == true

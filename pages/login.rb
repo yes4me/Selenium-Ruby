@@ -34,6 +34,13 @@ class Login < CommonPage
 	def check_page
 		return is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT) &&  is_displayed?(SUBMIT_BUTTON)
 	end
+	def success_message_present?
+		account	= Account.new(@driver)
+		return account.check_page
+	end
+	def failure_message_present?
+		return is_displayed?(FAILURE_PAGE)
+	end
 
 
 	def authentication(parameters = {})
@@ -43,14 +50,5 @@ class Login < CommonPage
 		type(USERNAME_INPUT, username)
 		type(PASSWORD_INPUT, password)
 		submit(SUBMIT_BUTTON)
-	end
-
-
-	def success_message_present?
-		account	= Account.new(@driver)
-		return account.check_page
-	end
-	def failure_message_present?
-		return is_displayed?(FAILURE_PAGE)
 	end
 end

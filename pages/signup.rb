@@ -27,50 +27,41 @@ class Signup < CommonPage
 	#Overwrite the base_page.visit()
 	def visit(url_path = "/signup")
 		super
+		print "@#{thing['browser']}@"
 	end
 	def check_page
 		return is_displayed?(CURRENT_PAGE)
 	end
-
-
-	def select_plan(parameters = {})
-		plan_option		= parameters[:plan_option] || Constants::PLAN_OPTION_DEFAULT
-		select(PLAN_OPTION, plan_option)
-	end
-	def type_user_info(parameters = {})
-		first_name		= parameters[:first_name] || Constants::FIRST_NAME_DEFAULT
-		email			= parameters[:email] || MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
-
-		type(FIRST_NAME_INPUT, first_name)
-		type(EMAIL_INPUT, email)
-	end
-	def type_company_info(parameters = {})
-		company_name	= parameters[:company_name] || "#{Constants::FIRST_NAME_DEFAULT} #{Constants::LAST_NAME_DEFAULT}"
-		company_size	= parameters[:company_size] || Constants::COMPANY_SIZE_DEFAULT
-		company_phone	= parameters[:company_size]
-
-		type(COMPANY_INPUT, company_name)
-		select(COMPANY_SIZE_OPTION, company_size)
-		type(COMPANY_PHONE_INPUT, company_phone)
-	end
-	def type_authentication(parameters = {})
-		username		= parameters[:username] || "#{Constants::FIRST_NAME_DEFAULT}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
-		password		= parameters[:password] || Constants::PASSWORD_DEFAULT
-
-		clear(USERNAME_INPUT)
-		type(USERNAME_INPUT, username)
-		type(PASSWORD_INPUT, password)
-	end
-	def submit_form
-		submit(SUBMIT_BUTTON)
-	end
-
-
 	def success_message_present?
 		account	= Account.new(@driver)
 		return account.check_page
 	end
 	def failure_message_present?
 		return is_displayed?(FAILURE_PAGE)
+	end
+
+
+	def fill_form(parameters = {})
+		plan_option		= parameters[:plan_option] || Constants::PLAN_OPTION_DEFAULT
+		first_name		= parameters[:first_name] || Constants::FIRST_NAME_DEFAULT
+		email			= parameters[:email] || MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
+		company_name	= parameters[:company_name] || "#{Constants::FIRST_NAME_DEFAULT} #{Constants::LAST_NAME_DEFAULT}"
+		company_size	= parameters[:company_size] || Constants::COMPANY_SIZE_DEFAULT
+		company_phone	= parameters[:company_size]
+		username		= parameters[:username] || "#{Constants::FIRST_NAME_DEFAULT}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
+		password		= parameters[:password] || Constants::PASSWORD_DEFAULT
+
+		select(PLAN_OPTION, plan_option)
+		type(FIRST_NAME_INPUT, first_name)
+		type(EMAIL_INPUT, email)
+		type(COMPANY_INPUT, company_name)
+		select(COMPANY_SIZE_OPTION, company_size)
+		type(COMPANY_PHONE_INPUT, company_phone)
+		clear(USERNAME_INPUT)
+		type(USERNAME_INPUT, username)
+		type(PASSWORD_INPUT, password)
+	end
+	def submit_form
+		submit(SUBMIT_BUTTON)
 	end
 end
