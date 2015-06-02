@@ -15,7 +15,7 @@ describe 'Test Signup' do
 		@signupHelper		= SignupHelper.new(@driver)
 	end
 	after(:each) do
-		#@login.logout
+		@login.logout
 	end
 
 	it 'positive signup' do

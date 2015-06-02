@@ -3,9 +3,8 @@
 # Purpose: set of common methods that is relevant only to https://saucelabs.com
 # ================================================================
 
-#require_relative FileNames::LIB_BASE_PAGE
-require_relative 'base_page'
-
+require 'yaml'
+require_relative FileNames::LIB_BASE_PAGE
 
 
 class CommonPage < BasePage
@@ -13,6 +12,6 @@ class CommonPage < BasePage
 		super
 	end
 	def logout
-		visit("/logout")
+		visit(Paths::LOGOUT)
 	end
 end

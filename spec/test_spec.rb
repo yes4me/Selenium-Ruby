@@ -4,26 +4,25 @@
 # ================================================================
 
 require_relative 'spec_helper'
-require_relative FileNames::PAGES_LOGIN
-require_relative FileNames::HELPER_SIGNUPTRIAL
+require_relative FileNames::HELPER_LOGIN
 
 
+describe 'Test login page' do
+	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
+	PASSWORD_VALUE			= Constants::PASSWORD_DEFAULT
+	USEREMAIL_VALUE			= Constants::EMAIL_DEFAULT
 
-describe 'Test Signup Trial' do
 	before(:each) do
 		@login				= Login.new(@driver)
-		@SignupTrialHelper	= SignupTrialHelper.new(@driver)
+		@loginHelper		= LoginHelper.new(@driver)
 	end
 	after(:each) do
-		#@login.logout
+		@login.logout
 	end
 
-	it 'signup1' do
-		print "RUNNING TEST1\n"
-		@SignupTrialHelper.test(true)
-	end
-	it 'signup2' do
-		print "RUNNING TEST2\n"
-		@SignupTrialHelper.test(true)
+
+	it 'positive-username' do
+		print "RUNNING TEST: positive-username\n"
+		@loginHelper.test(true)
 	end
 end

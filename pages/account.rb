@@ -6,17 +6,7 @@ require_relative FileNames::LIB_COMMON_PAGE
 
 
 class Account < CommonPage
-	CURRENT_PAGE			= { id: 'accountContainer' }
-
-	ACCOUNT_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[1]/a'}
-	TESTS_LINK				= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[2]/a'}
-	SNAPSHOTS_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[3]/a'}
-	DASHBOARD_LINK			= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[4]/a'}
-	SUBACCOUNTS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[5]/a'}
-	ACTIVE_TUNNELS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[6]/a'}
-	EDIT_SETTINGS_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[7]/a'}
-	BILLING_INFO_LINK		= { xpath:	'html/body/div[1]/div[1]/div[1]/ul/li[8]/a'}
-
+	LOCATOR = YAML.load_file(File.open(FileNames::LOCATORS_ACCOUNT))
 
 	#These variables are created to test various pages. They should be in their own unique files. They are located here temporally
 	TESTS_LABEL				= "Test"
@@ -38,42 +28,42 @@ class Account < CommonPage
 
 
 	def check_page
-		#Assert: is_displayed?(CURRENT_PAGE).should == true
-		#Verify: is_displayed?(CURRENT_PAGE)
-		return is_displayed?(CURRENT_PAGE)
+		#Assert: is_displayed?(LOCATOR['CURRENT_PAGE']).should == true
+		#Verify: is_displayed?(LOCATOR['CURRENT_PAGE'])
+		return is_displayed?(LOCATOR['CURRENT_PAGE'])
 	end
 
 
 	def goTo_AccountHome
-		visit("/account")
+		visit(Paths::ACCOUNT)
 		return is_displayed?(ACCOUNT_LOCATOR)
 	end
 	def goTo_Tests
-		visit("/tests")
+		visit(Paths::TESTS)
 		return text_displayed?(TESTS_LOCATOR, TESTS_LABEL)
 	end
 	def goTo_Snapshots
-		visit("/snapshots")
+		visit(Paths::SNAPSHOTS)
 		return text_displayed?(SNAPSHOTS_LOCATOR, SNAPSHOTS_LABEL)
 	end
 	def goTo_Dashboard
-		visit("/account/dashboard")
+		visit(Paths::DASHBOARD)
 		return text_displayed?(DASHBOARD_LOCATOR, DASHBOARD_LABEL)
 	end
 	def goTo_Subaccounts
-		visit("/sub-accounts")
+		visit(Paths::SUBACCOUNTS)
 		return text_displayed?(SUBACCOUNTS_LOCATOR, SUBACCOUNTS_LABEL)
 	end
 	def goTo_ActiveTunnels
-		visit("/tunnels")
+		visit(Paths::TUNNELS)
 		return text_displayed?(ACTIVE_TUNNELS_LOCATOR, ACTIVE_TUNNELS_LABEL)
 	end
 	def goTo_EditSettings
-		visit("/account/profile")
+		visit(Paths::PROFILE)
 		return text_displayed?(EDIT_SETTINGS_LOCATOR, EDIT_SETTINGS_LABEL)
 	end
 	def goTo_BillingInfoLink
-		visit("/account/billing-info")
+		visit(Paths::BILLINGINFO)
 		return text_displayed?(BILLING_INFO_LOCATOR, BILLING_INFO_LABEL)
 	end
 end

@@ -6,11 +6,13 @@
 require 'selenium-webdriver'
 require_relative '../config/constants'
 require_relative '../config/filenames'
+require_relative '../config/paths'
 
 
 RSpec.configure do |config|
 	config.include Constants
 	config.include FileNames
+	config.include Paths
 
 	config.before(:each) do
 		case ENV['browser']
@@ -22,6 +24,6 @@ RSpec.configure do |config|
 		end
 	end
 	config.after(:each) do
-		#@driver.quit
+		@driver.quit
 	end
 end

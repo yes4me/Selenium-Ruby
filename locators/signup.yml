@@ -1,0 +1,13 @@
+FAILURE_PAGE: { css: '.error-text' }
+CURRENT_PAGE: { id: 'page-signup>section>header>h1' }
+
+PLAN_OPTION: { xpath: 'html/body/div[2]/div/div/div/div/section/section/form/fieldset[1]/div[1]/select[2]'}			#There are 2 select id="plan"
+FIRST_NAME_INPUT: { id: 'name' }
+EMAIL_INPUT: { id: 'email' }
+COMPANY_INPUT: { id: 'company' }
+COMPANY_SIZE_OPTION: { id: 'company-size' }
+COMPANY_PHONE_INPUT: { id: 'phone-number' }
+USERNAME_INPUT: { id: 'username' }
+PASSWORD_INPUT: { id: 'password' }
+
+SUBMIT_BUTTON: { id: 'submit-button' }

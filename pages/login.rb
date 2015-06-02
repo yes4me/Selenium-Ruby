@@ -20,26 +20,21 @@ require_relative FileNames::PAGES_ACCOUNT
 
 
 class Login < CommonPage
-	FAILURE_PAGE		= { css: '.alert.alert-error' }
-
-	USERNAME_INPUT		= { id: 'username' }
-	PASSWORD_INPUT		= { id: 'password' }
-	SUBMIT_BUTTON		= { id: 'login' }
-
+	LOCATOR = YAML.load_file(File.open(FileNames::LOCATORS_LOGIN))
 
 	#Overwrite the base_page.visit()
-	def visit(url_path = "/login")
+	def visit(url_path = Paths::LOGIN)
 		super
 	end
 	def check_page
-		return is_displayed?(USERNAME_INPUT) && is_displayed?(PASSWORD_INPUT) &&  is_displayed?(SUBMIT_BUTTON)
+		return is_displayed?(LOCATOR['USERNAME_INPUT']) && is_displayed?(LOCATOR['PASSWORD_INPUT']) &&  is_displayed?(LOCATOR['SUBMIT_BUTTON'])
 	end
 	def success_message_present?
 		account	= Account.new(@driver)
 		return account.check_page
 	end
 	def failure_message_present?
-		return is_displayed?(FAILURE_PAGE)
+		return is_displayed?(LOCATOR['FAILURE_PAGE'])
 	end
 
 
@@ -47,8 +42,8 @@ class Login < CommonPage
 		username	= parameters[:username] || Constants::USERNAME_DEFAULT
 		password	= parameters[:password] || Constants::PASSWORD_DEFAULT
 
-		type(USERNAME_INPUT, username)
-		type(PASSWORD_INPUT, password)
-		submit(SUBMIT_BUTTON)
+		type(LOCATOR['USERNAME_INPUT'], username)
+		type(LOCATOR['PASSWORD_INPUT'], password)
+		submit(LOCATOR['SUBMIT_BUTTON'])
 	end
 end

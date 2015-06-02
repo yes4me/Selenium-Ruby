@@ -9,34 +9,21 @@ require_relative FileNames::LIB_MY_EMAIL
 
 
 class SignupTrial < CommonPage
-	FAILURE_PAGE			= { css: '.error-text' }
-	CURRENT_PAGE			= { id: 'page-signup>section>header>h1' }
-
-	FIRST_NAME_INPUT		= { id: 'first_name' }
-	LAST_NAME_INPUT			= { id: 'last_name' }
-	EMAIL_INPUT				= { id: 'email' }
-	COMPANY_INPUT			= { id: 'company' }
-	COMPANY_SIZE_OPTION		= { id: 'company-size' }
-	USERNAME_INPUT			= { id: 'username' }
-	PASSWORD_INPUT			= { id: 'password' }
-	PASSWORD_CONFIRM_INPUT	= { id: 'password_confirm' }
-
-	SUBMIT_BUTTON			= { id: 'submit-button' }
-
+	LOCATOR = YAML.load_file(File.open(FileNames::LOCATORS_SIGNUPTRIAL))
 
 	#Overwrite the base_page.visit()
-	def visit(url_path = "/signup/trial")
+	def visit(url_path = Paths::SIGNUPTRIAL)
 		super
 	end
 	def check_page
-		return is_displayed?(CURRENT_PAGE)
+		return is_displayed?(LOCATOR['CURRENT_PAGE'])
 	end
 	def success_message_present?
 		account	= Account.new(@driver)
 		return account.check_page
 	end
 	def failure_message_present?
-		return is_displayed?(FAILURE_PAGE)
+		return is_displayed?(LOCATOR['FAILURE_PAGE'])
 	end
 
 
@@ -50,16 +37,16 @@ class SignupTrial < CommonPage
 		password			= parameters[:password] || Constants::PASSWORD_DEFAULT
 		password_confirm	= parameters[:password_confirm] || password
 
-		type(FIRST_NAME_INPUT, first_name)
-		type(LAST_NAME_INPUT, last_name)
-		type(EMAIL_INPUT, email)
-		type(COMPANY_INPUT, company_name)
-		select(COMPANY_SIZE_OPTION, company_size)
-		type(USERNAME_INPUT, username)
-		type(PASSWORD_INPUT, password)
-		type(PASSWORD_CONFIRM_INPUT, password_confirm)
+		type(LOCATOR['FIRST_NAME_INPUT'], first_name)
+		type(LOCATOR['LAST_NAME_INPUT'], last_name)
+		type(LOCATOR['EMAIL_INPUT'], email)
+		type(LOCATOR['COMPANY_INPUT'], company_name)
+		select(LOCATOR['COMPANY_SIZE_OPTION'], company_size)
+		type(LOCATOR['USERNAME_INPUT'], username)
+		type(LOCATOR['PASSWORD_INPUT'], password)
+		type(LOCATOR['PASSWORD_CONFIRM_INPUT'], password_confirm)
 	end
 	def submit_form
-		submit(SUBMIT_BUTTON)
+		submit(LOCATOR['SUBMIT_BUTTON'])
 	end
 end

@@ -1,0 +1,5 @@
+FAILURE_PAGE: { css: '.alert.alert-error' }
+
+USERNAME_INPUT: { id: 'username' }
+PASSWORD_INPUT: { id: 'password' }
+SUBMIT_BUTTON: { id: 'login' }

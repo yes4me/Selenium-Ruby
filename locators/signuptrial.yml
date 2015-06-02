@@ -1,0 +1,13 @@
+FAILURE_PAGE: { css: '.error-text' }
+CURRENT_PAGE: { id: 'page-signup>section>header>h1' }
+
+FIRST_NAME_INPUT: { id: 'first_name' }
+LAST_NAME_INPUT: { id: 'last_name' }
+EMAIL_INPUT: { id: 'email' }
+COMPANY_INPUT: { id: 'company' }
+COMPANY_SIZE_OPTION: { id: 'company-size' }
+USERNAME_INPUT: { id: 'username' }
+PASSWORD_INPUT: { id: 'password' }
+PASSWORD_CONFIRM_INPUT: { id: 'password_confirm' }
+
+SUBMIT_BUTTON: { id: 'submit-button' }
