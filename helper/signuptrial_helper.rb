@@ -18,6 +18,7 @@ class SignupTrialHelper < SignupTrial
 
 		fill_form(parameters)
 		submit_form
+
 		if (pass==true)
 			success_message_present?.should == true
 		else

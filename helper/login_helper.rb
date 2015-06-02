@@ -12,6 +12,7 @@ class LoginHelper < Login
 		visit
 		#@login.check_page.should be_true
 		authentication(parameters)
+
 		if pass
 			success_message_present?.should == true
 		else
