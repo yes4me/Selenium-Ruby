@@ -8,16 +8,11 @@ require_relative FileNames::HELPER_LOGIN
 
 
 describe 'Test login page' do
-	USERNAME_VALUE			= Constants::USERNAME_DEFAULT
-	PASSWORD_VALUE			= Constants::PASSWORD_DEFAULT
-	USEREMAIL_VALUE			= Constants::EMAIL_DEFAULT
-
 	before(:each) do
-		@login				= Login.new(@driver)
 		@loginHelper		= LoginHelper.new(@driver)
 	end
 	after(:each) do
-		@login.logout
+		@loginHelper.logout
 	end
 
 
@@ -27,12 +22,12 @@ describe 'Test login page' do
 	end
 	it 'positive-email' do
 		print "RUNNING TEST: positive-email\n"
-		@loginHelper.test(true, :username => USEREMAIL_VALUE)
+		@loginHelper.test(true, :username => Constants::EMAIL_DEFAULT)
 	end
 	it 'positive-blank-padded-email' do
 		print "RUNNING TEST: positive-blank-padded-email\n"
 		#should pass (=true), but actually fail(false) = known server bug. But we still need to check for "true"!
-		@loginHelper.test(true, :username => " #{USEREMAIL_VALUE} ")
+		@loginHelper.test(true, :username => " #{Constants::EMAIL_DEFAULT} ")
 	end
 	it 'negative-email' do
 		print "RUNNING TEST: negative-email\n"

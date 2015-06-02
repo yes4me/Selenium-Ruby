@@ -11,11 +11,10 @@ require_relative FileNames::HELPER_SIGNUP
 
 describe 'Test Signup' do
 	before(:each) do
-		@login				= Login.new(@driver)
 		@signupHelper		= SignupHelper.new(@driver)
 	end
 	after(:each) do
-		@login.logout
+		@signupHelper.logout
 	end
 
 	it 'positive signup' do
