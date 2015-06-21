@@ -12,5 +12,6 @@ module Constants
 	EMAIL_DEFAULT = "saucelabs.automation@gmail.com"
 
 	COMPANY_SIZE_DEFAULT = "Just Me"
+	COMPANY_PHONE_DEFAULT = ""
 	PLAN_OPTION_DEFAULT = "Free - $0"
 end
