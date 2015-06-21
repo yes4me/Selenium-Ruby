@@ -28,7 +28,7 @@ class Signup < CommonPage
 
 
 	def fill_form(parameters = {})
-		plan_option		= parameters[:plan_option] || Constants::PLAN_OPTION_DEFAULT
+		plan_option		= parameters[:LOCATOR['PLAN_OPTION']] || Constants::PLAN_OPTION_DEFAULT
 		first_name		= parameters[:first_name] || Constants::FIRST_NAME_DEFAULT
 		email			= parameters[:email] || MyEmail.new("selenium.automation@saucelabs.com").gen_unique_email_address
 		company_name	= parameters[:company_name] || "#{Constants::FIRST_NAME_DEFAULT} #{Constants::LAST_NAME_DEFAULT}"

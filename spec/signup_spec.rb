@@ -20,5 +20,6 @@ describe 'Test Signup' do
 	it 'positive signup' do
 		print "RUNNING TEST: positive signup\n"
 		@signupHelper.test(true)
+		#@signupHelper.test(true, {:first_name => "first_name", :company_name => "company_name2"})
 	end
 end
