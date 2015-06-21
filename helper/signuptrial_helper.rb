@@ -9,7 +9,7 @@ require_relative FileNames::PAGES_SIGNUP_TRIAL
 
 class SignupTrialHelper < SignupTrial
 	#Optional hash parameter so that you can override one or more defaults if needed
-	def test(pass, parameters = {})
+	def test_form(pass, parameters = {})
 		visit
 
 		#if !(defined?(parameters[:email])).nil?

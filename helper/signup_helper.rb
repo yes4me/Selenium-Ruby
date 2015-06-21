@@ -8,7 +8,7 @@ require_relative FileNames::PAGES_SIGNUP
 
 class SignupHelper < Signup
 	#Optional hash parameter so that you can override one or more defaults if needed
-	def test(pass, parameters = {})
+	def test_form(pass, parameters = {})
 		visit
 		fill_form(parameters)
 		submit_form
