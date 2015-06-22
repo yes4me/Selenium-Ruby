@@ -7,4 +7,4 @@ rem ================================================================
 
 @echo BEGIN: %Date%, %time%
 @rspec -r ../config/local.rb %1
-@echo END: %date%, %time%		#This does not appear, due to "rspec". Not sure how to fix
+@echo END: %date%, %time%		rem This does not appear, due to "rspec". Not sure how to fix
