@@ -1,7 +1,7 @@
-# ================================================================
-# 2015/03/12 Thomas batch file
-# "rem" are comments, "@" is to make sure nothing get displayed
-# ================================================================
+rem ================================================================
+rem 2015/03/12 Thomas batch file
+rem "rem" are comments, "@" is to make sure nothing get displayed
+rem ================================================================
 
 @cls
 
