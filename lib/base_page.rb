@@ -1,6 +1,6 @@
 # ================================================================
 # 2015/03/13 Thomas
-# Purpose: set of methods that should universally work on all websites
+# Purpose: set of Selenium methods that should universally work on all websites
 # Source: http://anahorny.blogspot.in/2011/08/selenium-webdriver-ruby-tutorial.html
 # ================================================================
 
@@ -17,26 +17,36 @@ class BasePage
 	def visit(url_path)
 		@driver.get ENV['base_url'] + url_path
 	end
+	def get_title
+		return @driver.title
+	end
+	def wait_for(seconds = 15)
+		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
+	end
+	def wait_for(locator, seconds = 15)
+		wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+		begin
+			wait.until { find(locator) }
+			return true
+		rescue
+			return false
+		end
+	end
+
+	//Locators
 	def find(locator)
 		return @driver.find_element(locator)
 	end
 	def count_elements(locator)
 		return @driver.find_elements(locator).size()
 	end
-	def get_title
-		return @driver.title
-	end
 
-
-	#Buttons & forms
-	def clear(locator)
-		find(locator).clear()
-	end
+	#Forms: input, buttons & select
 	def type(locator, text)
 		find(locator).send_keys(text)
 	end
-	def click(locator)
-		find(locator).click
+	def clear(locator)
+		find(locator).clear()
 	end
 	def select(locator, optionText)
 		dropdown = find(locator)
@@ -52,6 +62,9 @@ class BasePage
 
 		select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 		select_list.select_by(:text, optionText)
+	end
+	def click(locator)
+		find(locator).click
 	end
 	def submit(locator)
 		find(locator).submit
@@ -78,21 +91,6 @@ class BasePage
 			return find(locator).text
 		rescue
 			return ""
-		end
-	end
-
-
-	#Others
-	def wait_for(seconds = 15)
-		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
-	end
-	def wait_for(locator, seconds = 15)
-		wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-		begin
-			wait.until { find(locator) }
-			return true
-		rescue
-			return false
 		end
 	end
 end
