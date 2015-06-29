@@ -4,6 +4,8 @@
 # Source: http://anahorny.blogspot.in/2011/08/selenium-webdriver-ruby-tutorial.html
 # ================================================================
 
+require_relative FileNames::LIB_MY_FILE
+
 class BasePage
 	def initialize(driver)
 		@driver = driver		#= super(driver)
@@ -13,12 +15,50 @@ class BasePage
 	end
 
 
-	#General methods
+	#Windows
 	def visit(url_path)
-		@driver.get ENV['base_url'] + url_path
+		if (url_path != "")
+			@driver.get url_path
+			take_screenshot()
+		else
+			take_screenshot()
+		end
 	end
 	def get_title
 		return @driver.title
+	end
+	def navigate_forward()
+		@driver.navigate().forward();
+	end
+	def navigate_refresh()
+		@driver.navigate().refresh();
+	end
+	def navigate_back()
+		@driver.navigate().back();
+	end
+	def window_maximize()
+		@driver.manage().window().maximize()
+	end
+	def window_resize(parameters = {})
+		height	= parameters[:height] || Constants::WINDOW_HEIGHT_DEFAULT
+		width	= parameters[:width] || Constants::WINDOW_WIDTH_DEFAULT
+		@driver.manage.window.resize_to(height, width)
+	end
+	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
+		directory_name	= FileNames::SCREENSHOT_FOLDER
+		file_name		= MyFile.new(file_name).gen_unique_file_name
+
+		Dir.mkdir(directory_name) unless File.exists?(directory_name)
+		@driver.save_screenshot(directory_name + file_name)
+	end
+
+
+	#Locators
+	def find(locator)
+		return @driver.find_element(locator)
+	end
+	def count_elements(locator)
+		return @driver.find_elements(locator).size()
 	end
 	def wait_for(seconds = 15)
 		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
@@ -33,13 +73,30 @@ class BasePage
 		end
 	end
 
-	//Locators
-	def find(locator)
-		return @driver.find_element(locator)
+
+	#Verify
+	def is_displayed?(locator)
+		begin
+			return find(locator).displayed?
+		rescue Selenium::WebDriver::Error::NoSuchElementError
+			return false
+		end
 	end
-	def count_elements(locator)
-		return @driver.find_elements(locator).size()
+	def text_displayed?(locator, elementText)
+		begin
+			return find(locator).text.include?(elementText)
+		rescue
+			return false
+		end
 	end
+	def text_present(locator)
+		begin
+			return find(locator).text
+		rescue
+			return ""
+		end
+	end
+
 
 	#Forms: input, buttons & select
 	def type(locator, text)
@@ -68,29 +125,5 @@ class BasePage
 	end
 	def submit(locator)
 		find(locator).submit
-	end
-
-
-	#Verify
-	def is_displayed?(locator)
-		begin
-			return find(locator).displayed?
-		rescue Selenium::WebDriver::Error::NoSuchElementError
-			return false
-		end
-	end
-	def text_displayed?(locator, elementText)
-		begin
-			return find(locator).text.include?(elementText)
-		rescue
-			return false
-		end
-	end
-	def text_present(locator)
-		begin
-			return find(locator).text
-		rescue
-			return ""
-		end
 	end
 end

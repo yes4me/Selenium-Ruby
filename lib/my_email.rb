@@ -12,13 +12,13 @@ require_relative FileNames::LIB_MY_CLOCK
 
 class MyEmail
 	def initialize(recordName)
-		@recordName = recordName
+		@recordName = record_name
 	end
-	def isEmail(email = @recordName)
+	def isEmail(email = @record_name)
 		regex = /(.+)\@(.+)[.][A-Za-z0-9]{2,4}/
 		return email.match(regex)?true:false
 	end
-	def gen_unique_email_address(email = @recordName)
+	def gen_unique_email_address(email = @record_name)
 		if isEmail
 			array		= email.split(/@/)
 			local_part	= array[0]
@@ -32,7 +32,6 @@ class MyEmail
 		end
 	end
 end
-
 
 
 #EMAIL	= "selenium.automation@saucelabs.com"

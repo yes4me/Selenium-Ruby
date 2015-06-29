@@ -3,5 +3,4 @@
 # Purpose: Default settings
 # ================================================================
 
-ENV['base_url']			||= 'https://saucelabs.com'
 ENV['browser']			||= 'firefox'				#Possible value: 'firefox' or 'chrome'

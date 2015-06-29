@@ -11,6 +11,12 @@ module FileNames
 	LIB_COMMON_PAGE = "../lib/common_page.rb"
 	LIB_MY_CLOCK = "../lib/my_clock.rb"
 	LIB_MY_EMAIL = "../lib/my_email.rb"
+	LIB_MY_FILE = "../lib/my_file.rb"
+
+	LOCATORS_LOGIN = "../locators/login.yml"
+	LOCATORS_ACCOUNT = "../locators/account.yml"
+	LOCATORS_SIGNUP = "../locators/signup.yml"
+	LOCATORS_SIGNUPTRIAL = "../locators/signuptrial.yml"
 
 	PAGES_LOGIN = "../pages/login.rb"
 	PAGES_ACCOUNT = "../pages/account.rb"
@@ -18,13 +24,11 @@ module FileNames
 	PAGES_SIGNUP_TRIAL = "../pages/signuptrial.rb"
 	PAGES_TEST = "../pages/test.rb"
 
-	LOCATORS_LOGIN = "../locators/login.yml"
-	LOCATORS_ACCOUNT = "../locators/account.yml"
-	LOCATORS_SIGNUP = "../locators/signup.yml"
-	LOCATORS_SIGNUPTRIAL = "../locators/signuptrial.yml"
-
 	HELPER_LOGIN = "../helper/login_helper.rb"
 	HELPER_SIGNUP = "../helper/signup_helper.rb"
 	HELPER_SIGNUPTRIAL = "../helper/signuptrial_helper.rb"
 	#HELPER_UTILS_PROPERTY = "../helper/utils_property_helper.rb"	#not used yet
+
+	SCREENSHOT_FOLDER = "../screenshot/"
+	SCREENSHOT_FILENAME = "screen.png"
 end

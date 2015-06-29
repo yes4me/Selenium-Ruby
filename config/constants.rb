@@ -5,6 +5,10 @@
 # ================================================================
 
 module Constants
+	BASE_URL = "https://saucelabs.com"
+	WINDOW_WIDTH_DEFAULT = "480"
+	WINDOW_HEIGHT_DEFAULT = "640"
+
 	USERNAME_DEFAULT = "sbssgm"
 	PASSWORD_DEFAULT = "SauceLabs2015"
 	FIRST_NAME_DEFAULT = "Joe"
