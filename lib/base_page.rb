@@ -19,8 +19,8 @@ class BasePage
 	def visit(url_path)
 		if (url_path != "")
 			@driver.get url_path
-			take_screenshot()
 		else
+			#Error has occured. Take a screenshot
 			take_screenshot()
 		end
 	end
