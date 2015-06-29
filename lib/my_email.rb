@@ -11,8 +11,8 @@ require_relative FileNames::LIB_MY_CLOCK
 
 
 class MyEmail
-	def initialize(recordName)
-		@recordName = record_name
+	def initialize(record_name)
+		@record_name = record_name
 	end
 	def isEmail(email = @record_name)
 		regex = /(.+)\@(.+)[.][A-Za-z0-9]{2,4}/
