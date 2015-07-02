@@ -34,7 +34,7 @@ class Signup < CommonPage
 		company_name	= parameters[:company_name] || "#{Constants::FIRST_NAME_DEFAULT} #{Constants::LAST_NAME_DEFAULT}"
 		company_size	= parameters[:company_size] || Constants::COMPANY_SIZE_DEFAULT
 		company_phone	= parameters[:company_phone] || Constants::COMPANY_PHONE_DEFAULT
-		username		= parameters[:username] || "#{Constants::FIRST_NAME_DEFAULT}_#{MyClock.get_date}-#{MyClock.micro_seconds}"	#20 character max
+		username		= parameters[:username] || "#{Constants::FIRST_NAME_DEFAULT}_#{MyClock.get_date}-#{MyClock.get_microseconds}"	#20 character max
 		password		= parameters[:password] || Constants::PASSWORD_DEFAULT
 
 		select(LOCATOR['PLAN_OPTION'], plan_option)

@@ -28,7 +28,7 @@ class MyEmail
 			#localPart	= email.match(/(.+)\@/)[1]
 			#domainPart	= email.match(/\@(.+)/)[1]
 
-			return "#{local_part}+#{MyClock.get_date}-#{MyClock.micro_seconds}@#{domain_part}"
+			return "#{local_part}+#{MyClock.get_date}-#{MyClock.get_microseconds}@#{domain_part}"
 		end
 	end
 end

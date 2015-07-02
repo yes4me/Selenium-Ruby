@@ -140,7 +140,7 @@ class BasePage
 	end
 
 
-	#Other methods rarely used
+	#Other methods
 	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
 		directory_name	= FileNames::SCREENSHOT_FOLDER
 		file_name		= MyFile.new(file_name).gen_unique_file_name

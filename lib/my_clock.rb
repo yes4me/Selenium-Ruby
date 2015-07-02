@@ -10,7 +10,7 @@ class MyClock
 	def self.get_time
 		return Time.new.strftime("%H%M%S")
 	end
-	def self.micro_seconds					#Returns the time in number of microseconds
+	def self.get_microseconds					#Returns the time in number of microseconds
 		return Time.new.usec
 	end
 end

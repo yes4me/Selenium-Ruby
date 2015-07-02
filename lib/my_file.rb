@@ -27,7 +27,7 @@ class MyFile
 		if isfile_name
 			file	= file_name.match(/(.+)\.(.+)/)[1]
 			type	= file_name.match(/(.+)\.(.+)/)[2]
-			return "#{file}+#{MyClock.get_date}-#{MyClock.micro_seconds}.#{type}"
+			return "#{file}+#{MyClock.get_date}-#{MyClock.get_microseconds}.#{type}"
 		end
 	end
 end
