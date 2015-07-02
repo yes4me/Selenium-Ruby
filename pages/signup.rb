@@ -43,8 +43,7 @@ class Signup < CommonPage
 		type(LOCATOR['COMPANY_INPUT'], company_name)
 		select(LOCATOR['COMPANY_SIZE_OPTION'], company_size)
 		type(LOCATOR['COMPANY_PHONE_INPUT'], company_phone)
-		clear(LOCATOR['USERNAME_INPUT'])
-		type(LOCATOR['USERNAME_INPUT'], username)
+		typeNew(LOCATOR['USERNAME_INPUT'], username)
 		type(LOCATOR['PASSWORD_INPUT'], password)
 	end
 	def submit_form

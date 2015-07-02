@@ -16,9 +16,15 @@ class BasePage
 
 
 	#Windows
+	def smart_add_url_protocol(url)
+		if url =~ %r{\Awww\.}i
+			url = "http://"+ url
+		end
+		return url
+	end
 	def visit(url_path)
 		if (url_path != "")
-			@driver.get url_path
+			@driver.get smart_add_url_protocol(url_path)
 		else
 			#Error has occured. Take a screenshot
 			take_screenshot()
@@ -43,13 +49,6 @@ class BasePage
 		height	= parameters[:height] || Constants::WINDOW_HEIGHT_DEFAULT
 		width	= parameters[:width] || Constants::WINDOW_WIDTH_DEFAULT
 		@driver.manage.window.resize_to(height, width)
-	end
-	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
-		directory_name	= FileNames::SCREENSHOT_FOLDER
-		file_name		= MyFile.new(file_name).gen_unique_file_name
-
-		Dir.mkdir(directory_name) unless File.exists?(directory_name)
-		@driver.save_screenshot(directory_name + file_name)
 	end
 
 
@@ -99,6 +98,10 @@ class BasePage
 
 
 	#Forms: input, buttons & select
+	def typeNew(locator, text)
+		clear(locator)
+		find(locator).send_keys(text)
+	end
 	def type(locator, text)
 		find(locator).send_keys(text)
 	end
@@ -120,10 +123,29 @@ class BasePage
 		select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 		select_list.select_by(:text, optionText)
 	end
-	def click(locator)
-		find(locator).click
+	def click(locator, parameters = {})
+		checkBox		= parameters[:check] || "null"
+
+		if ((checkBox=="true") || (checkBox=="1"))
+			locator.clear
+			find(locator).click
+		elsif ((checkBox=="false") || (checkBox=="0"))
+			locator.clear
+		else
+			find(locator).click
+		end
 	end
 	def submit(locator)
 		find(locator).submit
+	end
+
+
+	#Other methods rarely used
+	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
+		directory_name	= FileNames::SCREENSHOT_FOLDER
+		file_name		= MyFile.new(file_name).gen_unique_file_name
+
+		Dir.mkdir(directory_name) unless File.exists?(directory_name)
+		@driver.save_screenshot(directory_name + file_name)
 	end
 end
