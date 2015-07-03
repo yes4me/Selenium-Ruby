@@ -14,24 +14,37 @@ class BasePage
 		#@driver.manage.timeouts.page_load		= 60
 	end
 
-
+	# ----------------------------------------------------------------
 	#Windows
-	def smart_add_url_protocol(url)
+	# ----------------------------------------------------------------
+	def get_title
+		return @driver.title
+	end
+
+	def visit(url_path)
+		begin
+			@driver.get smart_add_url_protocol(url_path)
+			return true
+		rescue
+			return false
+		end
+	end
+	def fix_URL(url)
+		url = url.strip
 		if url =~ %r{\Awww\.}i
 			url = "http://"+ url
 		end
+		url = url.sub(/\\$/, "")
 		return url
 	end
-	def visit(url_path)
-		if (url_path != "")
-			@driver.get smart_add_url_protocol(url_path)
+	def compare_URL(url1, url2)
+		url1 = fix_URL(url1).downcase
+		url2 = fix_URL(url2).downcase
+		if (url1==url2)
+			return true
 		else
-			#Error has occured. Take a screenshot
-			take_screenshot()
+			return false
 		end
-	end
-	def get_title
-		return @driver.title
 	end
 	def navigate_forward()
 		@driver.navigate().forward();
@@ -51,8 +64,9 @@ class BasePage
 		@driver.manage.window.resize_to(height, width)
 	end
 
-
+	# ----------------------------------------------------------------
 	#Locators
+	# ----------------------------------------------------------------
 	def find(locator)
 		return @driver.find_element(locator)
 	end
@@ -72,8 +86,9 @@ class BasePage
 		end
 	end
 
-
+	# ----------------------------------------------------------------
 	#Verify
+	# ----------------------------------------------------------------
 	def is_displayed?(locator)
 		begin
 			return find(locator).displayed?
@@ -96,8 +111,9 @@ class BasePage
 		end
 	end
 
-
+	# ----------------------------------------------------------------
 	#Forms: input, buttons & select
+	# ----------------------------------------------------------------
 	def typeNew(locator, text)
 		clear(locator)
 		find(locator).send_keys(text)
@@ -139,13 +155,17 @@ class BasePage
 		find(locator).submit
 	end
 
-
+	# ----------------------------------------------------------------
 	#Other methods
+	# ----------------------------------------------------------------
 	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
 		directory_name	= FileNames::SCREENSHOT_FOLDER
 		file_name		= MyFile.new(file_name).gen_unique_file_name
 
 		Dir.mkdir(directory_name) unless File.exists?(directory_name)
 		@driver.save_screenshot(directory_name + file_name)
+	end
+
+	def downloadPict(url, file_name)
 	end
 end

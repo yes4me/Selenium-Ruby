@@ -24,11 +24,13 @@ describe 'Test login page' do
 	it 'positive-username' do
 		print "TEST\n"
 		@basePage.visit("http://www.google.com")
-		@basePage.type(searchBar, "ruby")
-		@basePage.click(submitButton)
+		#@basePage.type(searchBar, "ruby")
+		#@basePage.click(submitButton)
 
 		#@basePage.visit("http://www.tizag.com/htmlT/htmlcheckboxes.php")
 		#@basePage.click(checkbox)
 		#@basePage.click(checkbox, :check => false)
+
+		print @basePage.compare_URL("  www.cnn.com\\  ", "www.CNN.com ")
 	end
 end
