@@ -6,6 +6,7 @@
 # ================================================================
 
 require_relative FileNames::LIB_MY_FILE
+require "open-uri"
 
 class BasePage
 	def initialize(driver)
@@ -24,7 +25,7 @@ class BasePage
 
 	def visit(url_path)
 		begin
-			@driver.get smart_add_url_protocol(url_path)
+			@driver.get fix_URL(url_path)
 			return true
 		rescue
 			return false
@@ -155,18 +156,19 @@ class BasePage
 	# ----------------------------------------------------------------
 	#Pictures
 	# ----------------------------------------------------------------
-	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
+	def take_screenshot(file_name = FileNames::SCREENSHOT_FOLDER + FileNames::SCREENSHOT_FILENAME)
 		directory_name	= FileNames::SCREENSHOT_FOLDER
 		file_name		= MyFile.new(file_name).gen_unique_file_name
 
 		Dir.mkdir(directory_name) unless File.exists?(directory_name)
 		@driver.save_screenshot(directory_name + file_name)
 	end
-	def downloadPict(locator, file_name)
-		#TO DO
-	end
-	def downloadPict(url, file_name)
-		#TO DO
+	def downloadPict(locator, file_name = FileNames::SCREENSHOT_FOLDER + FileNames::SCREENSHOT_FILENAME)
+		picture	= find( locator )
+		url		= picture.attribute("src")
+		open(file_name, 'wb') do |file|
+		  file << open(url).read
+		end
 	end
 
 	# ----------------------------------------------------------------

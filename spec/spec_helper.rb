@@ -20,11 +20,11 @@ RSpec.configure do |config|
 		when 'firefox'
 			@driver = Selenium::WebDriver.for :firefox
 		when 'chrome'
-			Selenium::WebDriver::Chrome::Service.executable_path = File.join(Dir.pwd, 'vendor/chromedriver')
+			Selenium::WebDriver::Chrome::Service.executable_path = File.join(Dir.pwd, '../vendor/chromedriver')
 			@driver = Selenium::WebDriver.for :chrome
 		end
 	end
 	config.after(:each) do
-		#@driver.quit
+		@driver.quit
 	end
 end

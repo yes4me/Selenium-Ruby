@@ -30,9 +30,8 @@ describe 'Test login page' do
 		#@basePage.click(checkbox)
 		#@basePage.click(checkbox, :check => false)
 
-		url = "http://www.w3schools.com/html/default.asp"
+		@basePage.visit("http://www.w3schools.com/html/default.asp")
 		locator_pict = { xpath: 'html/body/div[4]/div/div[2]/div[2]/div[1]/div/div[2]/img'}
-		@basePage.visit(url)
-		@basePage.downloadPict(locator_pict, "todelete.gif")
+		@basePage.downloadPict(locator_pict)
 	end
 end
