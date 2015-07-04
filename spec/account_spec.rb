@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/03/12 Thomas
-# Purpose: correctly login and go to the different links on the left panel
+# Created:	2015/03/12
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	correctly login and go to the different links on the left panel
 # ================================================================
 
 require_relative 'spec_helper'

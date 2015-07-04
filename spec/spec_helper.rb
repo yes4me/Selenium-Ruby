@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/03/12 Thomas 2nd program on RSpec
-# This is a standard in the industry according to the book "Instant RSpec Test-Driven Development How-to" and some website
+# Created:	2015/03/12
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	This is a standard in the industry according to the book "Instant RSpec Test-Driven Development How-to" and some website
 # ================================================================
 
 require 'selenium-webdriver'
@@ -24,6 +25,6 @@ RSpec.configure do |config|
 		end
 	end
 	config.after(:each) do
-		@driver.quit
+		#@driver.quit
 	end
 end

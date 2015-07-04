@@ -1,7 +1,8 @@
 # ================================================================
-# 2015/03/13 Thomas
-# Purpose: set of Selenium methods that should universally work on all websites
-# Source: http://anahorny.blogspot.in/2011/08/selenium-webdriver-ruby-tutorial.html
+# Created:	2015/03/13
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	set of Selenium methods that should universally work on all websites
+# Source:	http://anahorny.blogspot.in/2011/08/selenium-webdriver-ruby-tutorial.html
 # ================================================================
 
 require_relative FileNames::LIB_MY_FILE
@@ -46,6 +47,9 @@ class BasePage
 			return false
 		end
 	end
+	def get_current_url()
+		return @driver.current_url
+	end
 	def navigate_forward()
 		@driver.navigate().forward();
 	end
@@ -70,20 +74,11 @@ class BasePage
 	def find(locator)
 		return @driver.find_element(locator)
 	end
+	def finds(locator)
+		return @driver.find_elements(locator)
+	end
 	def count_elements(locator)
 		return @driver.find_elements(locator).size()
-	end
-	def wait_for(seconds = 15)
-		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
-	end
-	def wait_for(locator, seconds = 15)
-		wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-		begin
-			wait.until { find(locator) }
-			return true
-		rescue
-			return false
-		end
 	end
 
 	# ----------------------------------------------------------------
@@ -140,6 +135,7 @@ class BasePage
 		select_list.select_by(:text, optionText)
 	end
 	def click(locator, parameters = {})
+		wait_for(locator)
 		checkBox		= parameters[:check] || "null"
 
 		if ((checkBox=="true") || (checkBox=="1"))
@@ -152,11 +148,12 @@ class BasePage
 		end
 	end
 	def submit(locator)
+		wait_for(locator)
 		find(locator).submit
 	end
 
 	# ----------------------------------------------------------------
-	#Other methods
+	#Pictures
 	# ----------------------------------------------------------------
 	def take_screenshot(file_name = FileNames::SCREENSHOT_FILENAME)
 		directory_name	= FileNames::SCREENSHOT_FOLDER
@@ -165,7 +162,30 @@ class BasePage
 		Dir.mkdir(directory_name) unless File.exists?(directory_name)
 		@driver.save_screenshot(directory_name + file_name)
 	end
-
-	def downloadPict(url, file_name)
+	def downloadPict(locator, file_name)
+		#TO DO
 	end
+	def downloadPict(url, file_name)
+		#TO DO
+	end
+
+	# ----------------------------------------------------------------
+	#Wait, because Selenium is too fast ^_^
+	# ----------------------------------------------------------------
+	def wait_for(seconds = 15)
+		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
+	end
+	def wait_for(locator, seconds = 15)
+		wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+		begin
+			wait.until { find(locator) }
+			return true
+		rescue
+			return false
+		end
+	end
+
+	# ----------------------------------------------------------------
+	#Other methods
+	# ----------------------------------------------------------------
 end

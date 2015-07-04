@@ -1,4 +1,7 @@
 # ================================================================
+# Created:	2015/03/12
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Test the login page
 # 2015/03/12 Thomas notes
 	#Does work in Ruby:
 		#@driver.find_element(id: 'login').displayed?.should == true

@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/03/13 Thomas
-# Purpose: set of common methods that is relevant only to https://saucelabs.com
+# Created:	2015/03/13
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	set of common methods that is relevant only to https://saucelabs.com
 # ================================================================
 
 require 'uri'

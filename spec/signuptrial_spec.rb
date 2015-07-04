@@ -1,12 +1,12 @@
 # ================================================================
-# 2015/04/16 Thomas
-# Purpose: Create a “Happy Path” test to sign up a free user on https://saucelabs.com/signup/trial
+# Created:	2015/04/16
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Create a “Happy Path” test to sign up a free user on https://saucelabs.com/signup/trial
 # ================================================================
 
 require_relative 'spec_helper'
 require_relative FileNames::PAGES_LOGIN
 require_relative FileNames::HELPER_SIGNUPTRIAL
-
 
 
 describe 'Test Signup Trial' do

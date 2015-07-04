@@ -1,5 +1,6 @@
 # ================================================================
-# 2015/06/29 Thomas
+# Created:	2015/06/29
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
 # Purpose:
 #	Write a method named gen_unique_file_name that returns a unique file name of the format +yyyymmdd-SSSSS added onto the first half.
 # 	For example, if it will return screen_+20150324-911696.png

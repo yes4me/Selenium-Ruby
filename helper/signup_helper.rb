@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/05/30 Thomas
-# Purpose: remove redundant codes
+# Created:	2015/05/30
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Methods for the spec file
 # ================================================================
 
 require_relative FileNames::PAGES_SIGNUP

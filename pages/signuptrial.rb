@@ -1,7 +1,8 @@
 # ================================================================
-# 2015/04/16
-# Purpose: To register a new TRIAL user.
-# Sign up using only users with email addresses of the format selenium.automation+yyyymmdd-hhmm-ssssss@gmail.com, such as saucelabs.automation+20150407-0759-173060@gmail.com
+# Created:	2015/04/16
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Test registration of a new TRIAL user.
+# PS: Sign up using only users with email addresses of the format selenium.automation+yyyymmdd-hhmm-ssssss@gmail.com, such as saucelabs.automation+20150407-0759-173060@gmail.com
 # ================================================================
 
 require_relative FileNames::LIB_COMMON_PAGE

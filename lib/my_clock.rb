@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/03/25 Thomas
-# Purpose: required by my_email.rb
+# Created:	2015/03/25
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Generic time related methods
 # ================================================================
 
 class MyClock

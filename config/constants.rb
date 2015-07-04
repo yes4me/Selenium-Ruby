@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/04/28 Thomas
-# Purpose: Keep all global constant values
+# Created:	2015/04/28
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Keep all global constant values
 # PS: tabs break the program
 # ================================================================
 

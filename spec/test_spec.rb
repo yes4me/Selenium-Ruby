@@ -1,12 +1,11 @@
 # ================================================================
-# 2015/04/19 Thomas
-# Purpose: just to run any test
+# Created:	2015/04/19
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	just to run any test
 # ================================================================
 
 require_relative 'spec_helper'
 require_relative FileNames::LIB_BASE_PAGE
-
-
 
 
 describe 'Test login page' do
@@ -23,7 +22,7 @@ describe 'Test login page' do
 
 	it 'positive-username' do
 		print "TEST\n"
-		@basePage.visit("http://www.google.com")
+		#@basePage.visit("http://www.google.com")
 		#@basePage.type(searchBar, "ruby")
 		#@basePage.click(submitButton)
 
@@ -31,6 +30,9 @@ describe 'Test login page' do
 		#@basePage.click(checkbox)
 		#@basePage.click(checkbox, :check => false)
 
-		print @basePage.compare_URL("  www.cnn.com\\  ", "www.CNN.com ")
+		url = "http://www.w3schools.com/html/default.asp"
+		locator_pict = { xpath: 'html/body/div[4]/div/div[2]/div[2]/div[1]/div/div[2]/img'}
+		@basePage.visit(url)
+		@basePage.downloadPict(locator_pict, "todelete.gif")
 	end
 end

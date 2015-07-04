@@ -1,5 +1,7 @@
 # ================================================================
-# 2015/03/13 Thomas
+# Created:	2015/03/13
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Test the account page
 # ================================================================
 
 require_relative FileNames::LIB_COMMON_PAGE

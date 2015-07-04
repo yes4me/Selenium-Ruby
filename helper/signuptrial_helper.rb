@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/04/07 Thomas
-# Purpose: remove redundant codes
+# Created:	2015/04/07
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Methods for the spec file
 # ================================================================
 
 #require_relative FileNames::LIB_MY_EMAIL

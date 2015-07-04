@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/04/29 Thomas
-# Purpose: Keep all finenames
+# Created:	2015/04/29
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	Keep all URL locations
 # ================================================================
 
 module Paths

@@ -1,6 +1,7 @@
 # ================================================================
-# 2015/03/12 Thomas
-# Purpose: check all login combinations and see if it passes/fails as expected
+# Created:	2015/03/12
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
+# Purpose:	check all login combinations and see if it passes/fails as expected
 # ================================================================
 
 require_relative 'spec_helper'

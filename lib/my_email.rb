@@ -1,5 +1,6 @@
 # ================================================================
-# 2015/03/25 Thomas
+# Created:	2015/03/25
+# Author:	Thomas Nguyen - thomas_ejob@hotmail.com
 # Purpose:
 #	Write a method named gen_unique_email_address(email) that returns the email parameter with a unique
 #	plus-sign string of the format +yyyymmdd-SSSSS added onto the first half. For example, if it is called
