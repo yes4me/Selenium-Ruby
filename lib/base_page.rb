@@ -172,7 +172,7 @@ class BasePage
 	end
 
 	# ----------------------------------------------------------------
-	#Wait, because Selenium is too fast ^_^
+	#Wait, Selenium is too fast ^_^
 	# ----------------------------------------------------------------
 	def wait_for(seconds = 15)
 		Selenium::WebDriver::Wait.new(timeout: seconds).until { yield }
