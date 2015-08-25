@@ -1,0 +1,28 @@
+
+                          Selenium & Ruby
+
+  What is it?
+  -----------
+
+  This is a demo of Selenium using Ruby. The project connects to
+  https://saucelabs.com, and test the login page, the signup and the
+  signuptrial.
+
+
+  Documentation
+  -------------
+  Explication of the code is: https://www.youtube.com/watch?v=NYZXy31ZHBw
+
+
+  Installation
+  ------------
+  Go to the directory /spec and run any of the test files such as:
+  myrspec.bat account_spec.rb
+  myrspec.bat login_spec.rb
+  myrspec.bat signup_spec.rb
+  myrspec.bat signuptrial_spec.rb
+
+
+  Contacts
+  --------
+  Author:	Thomas Nguyen - thomas_ejob@hotmail.com
