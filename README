@@ -3,7 +3,7 @@
 
   What is it?
   -----------
-  This is a demo of Selenium using Ruby. The project connects to
+  This is a demo of Selenium using Ruby & RSpec. The project connects to
   https://saucelabs.com, and test the login page, the signup and the
   signuptrial.
 
