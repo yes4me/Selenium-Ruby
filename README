@@ -1,9 +1,9 @@
 
-                          Selenium & Ruby & Rspec
+                          Selenium & Ruby using Rspec
 
   What is it?
   -----------
-  This is a demo of Selenium using Ruby & RSpec. The project connects to
+  This is a demo of Selenium & Ruby using RSpec. The project connects to
   https://saucelabs.com, and test the login page, the signup and the
   signuptrial.
 
@@ -11,6 +11,7 @@
   The Latest Version
   ------------------
   https://github.com/yes4me?tab=repositories
+  Started on: Mar 22, 2015
 
 
   Documentation
